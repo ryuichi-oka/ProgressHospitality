@@ -30,6 +30,7 @@
 <...>
 
 ## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1sToqh_uL26R6DYxKnRlgbjQ2znvjjEmSK68qENMskbM/edit?usp=sharing>
 
 ## 開発環境
 - OS：Linux(CentOS)
