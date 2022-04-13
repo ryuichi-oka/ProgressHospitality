@@ -1,0 +1,127 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.top {
+  background-color: #008000;
+  padding: 50px;
+}
+
+.content {
+  display: flex;
+  position: relative;
+
+  &__title {
+    color: #fff;
+  }
+
+  &__text {
+    color: #fff;
+    margin: 20px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.button {
+  text-align: center;
+
+  &__admin {
+    padding: 5px 20px;
+    color: #000;
+    border: 1px solid #f68b1f;
+    border-radius: 5px;
+    background-color: #f68b1f;
+    text-decoration: none;
+  }
+
+  &__member {
+    padding: 5px 20px;
+    color: #000;
+    border: 1px solid #f68b1f;
+    border-radius: 5px;
+    background-color: #f68b1f;
+    text-decoration: none;
+  }
+}
+
+.feature {
+
+  &__title {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    margin-top: 50px;
+  }
+
+  &__body {
+    margin: 0 auto;
+
+    &--gray {
+      background-color: #c3c3c3;
+      margin: 0 auto;
+    }
+
+    &--reverse {
+      display: flex;
+      flex-flow: row-reverse;
+      margin: 0 auto;
+    }
+  }
+}
+
+.function {
+  width: 90%;
+  display: flex;
+  border: 1px solid #c8c8c8;
+  height: 300px;
+
+  &__body {
+    width: 50%;
+  }
+
+  &__title {
+    color: #333c5e;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  &__text {
+    width: 90%;
+    padding-top: 20px;
+    padding-left: 30px;
+  }
+
+  &__image {
+    width: 45%;
+    height: 90%;
+    border: 1px solid #c8c8c8;
+    margin: auto;
+  }
+}
+
+.functionList {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+
+  &__item {
+    border: 1px solid #c8c8c8;
+    width: 32%;
+    height: 250px;
+    list-style: none;
+    margin-top: 20px;
+    margin-left: 3%;
+  }
+
+  &__item:first-child {
+    margin-left: 0;
+  }
+
+  &__title {
+    text-align: center;
+  }
+}
+
