@@ -1,0 +1,98 @@
+// Place all the styles related to the admin/groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &__bg {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__content {
+    padding: 20px;
+    background-color: #fff;
+    width: 25%;
+    height: 230px;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+
+  &__form {
+
+    &--img {
+      height: 30px;
+      margin-top: 10px;
+    }
+
+    &--txt {
+      height: 30px;
+      width: 90%;
+      margin-top: 10px;
+    }
+
+    &--sub {
+      height: 30px;
+      margin-top: 20px;
+      display       : inline-block;
+      border-radius : 5px;
+      font-size     : 10pt;
+      text-align    : center;
+      cursor        : pointer;
+      padding       : 5px 15px;
+      background    : #00ff00;
+      color         : #000;
+    }
+  }
+}
+
+.close-btn {
+  display       : inline-block;
+  border-radius : 5px;
+  font-size     : 10pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 7px 16px;
+  background    : #ff4d4d;
+  color         : #ffffff;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__list {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+}
+
+.groupList {
+
+  &__name {
+    display: inline-block;
+  }
+
+  &__edit {
+    display: inline-block;
+    background-color: #00ff00;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 2px 4px;
+    margin: 0 auto;
+    float: right;
+    color: #000;
+  }
+}

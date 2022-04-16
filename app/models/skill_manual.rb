@@ -1,0 +1,2 @@
+class SkillManual < ApplicationRecord
+end

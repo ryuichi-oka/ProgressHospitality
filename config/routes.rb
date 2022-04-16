@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    resources :groups, only: [:new, :create, :index, :show, :edit, :update]
+
+    resources :members, only: [:new, :create, :show, :edit, :update]
+  end
 
   devise_for :members, skip: [:passwords], controllers: {
     registrations: "member/registrations",

@@ -1,0 +1,2 @@
+class MemberSkill < ApplicationRecord
+end
