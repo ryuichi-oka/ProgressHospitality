@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="container__title"><%= @member.last_name + @member.first_name %>さん</h2>
+
+  <div class="container__item member">
+    <div class="member__left">
+      <div class="member__image"><%= image_tag @member.get_image(200, 200) %></div>
+      <div class="member__info">
+        <%= @member.last_name + @member.first_name %><br>
+        <%= @member.birthday.strftime("%Y年%m月%d日") %><br>
+        <%= "〒" +@member.postal_code %><br>
+        <%= @member.address %><br>
+        <%= @member.telephone_number %><br>
+        <%= @member.email %><br>
+        <% if @member.is_active %>
+          <p>在籍</p>
+        <% else %>
+          <p>退社</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="member__right">
+      <div class="member__objective">
+        <h3>今月の目標</h3>
+        <%= @member.objective %>
+      </div>
+      <div class="member__skill skills">
+        <div class="skills__aquired">
+          <h3>習得スキル</h3>
+        </div>
+        <div class="skill__request">
+         <h3>習得リクエスト</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

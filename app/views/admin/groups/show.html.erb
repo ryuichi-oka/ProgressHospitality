@@ -1,19 +1,14 @@
 <div class="container">
-  <h1 class="container__title"><%= @group.shop_name %>メンバー一覧</h1>
-  <button class="">メンバーを追加</button>
-    <div class="modal js-modal">
-      <div class="modal__bg js-modal-close"></div>
-      <div class="modal__content">
-        <h4>メンバー新規登録</h4>
-        <%= form_with model: @member, url: new_member_registration_path, local: true do |f| %>
-        <div class="modal__form--img"><%= f.file_field :shop_image, accept: "image/*", class: "modal__form--img" %></div>
-        <div class="modal__form--txt"><%= f.text_field :shop_name, class: "modal__form--txt" %></div>
-        <div><%= f.submit "登録", class: "modal__form--sub" %></div>
-        <% end %>
-        <div class="js-modal-close" align="right">
-          <button class="close-btn"><span>✕</span>閉じる</button>
-        </div>
-      </div>
+  <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
+  <h1><%= @group.shop_name %>メンバー一覧</h1>
+  <div><%= link_to "メンバー追加", new_member_registration_path %></div>
+  <div class="member">
+    <% @members.each do |member| %>
+    <div class="member__list memberList">
+      <div class="memberList__image"><%= image_tag member.get_image(200, 200) %></div>
+      <h4 class="memberList__name"><%= link_to (member.last_name + member.first_name), admin_member_path(member.id) %></h4>
+      <%= link_to "編集", edit_admin_member_path(member.id), class: "memberList__edit" %>
     </div>
-
+    <% end %>
+  </div>
 </div>

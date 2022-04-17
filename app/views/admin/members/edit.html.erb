@@ -1,7 +1,6 @@
-<h2>メンバー新規登録</h2>
+<h2><%= @member.last_name + @member.first_name %>さん登録情報編集</h2>
 
-<%= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member' do |f| %>
-  <%= render "member/shared/error_messages", resource: resource %>
+<%= form_with model: @member, url: admin_member_path(@member.id), method: :patch, local: true do |f| %>
 
   <div class="container">
     <div class="container__left">
@@ -39,16 +38,9 @@
         <h5>電話番号</h5>
         <%= f.text_field :telephone_number, placeholder: "00012345678" %>
       </div>
-      <div class="field__password">
-        <h5>パスワード</h5>
-        <%= f.password_field :password, placeholder: "パスワード" %><br>
-        <%= f.password_field :password_confirmation, placeholder: "確認用" %>
-      </div>
       <div class="field__submit">
-        <%= f.submit "登録" %>
+        <%= f.submit "更新" %>
       </div>
       <% end %>
     </div>
   </div>
-
-

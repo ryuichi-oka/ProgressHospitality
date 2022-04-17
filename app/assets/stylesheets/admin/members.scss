@@ -1,3 +1,48 @@
 // Place all the styles related to the admin/members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container {
+
+  &__title {
+    margin-top: 20px;
+  }
+
+  &__item {
+    margin: 20px auto;
+  }
+}
+
+.member {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+
+  &__left {
+    width: 30%;
+  }
+
+  &__right {
+    width: 70%;
+  }
+
+  &__objective {
+    height: 200px;
+  }
+
+  &__skill {
+    height: 100%;
+  }
+}
+
+.skills {
+  display: flex;
+
+  &__aquired {
+    width: 50%;
+  }
+
+  &__request {
+    width: 50%;
+  }
+}

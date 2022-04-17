@@ -18,6 +18,7 @@ class Admin::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @members = @group.members.where(is_active: true)
   end
 
   def edit

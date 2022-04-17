@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
   has_one_attached :shop_image
 
+  has_many :members
+
   def get_shop_image(width, height)
     unless shop_image.attached?
       file_path = Rails.root.join('app/assets/images/no_shop_image.jpg')

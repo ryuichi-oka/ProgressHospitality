@@ -51,9 +51,7 @@ class Member::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  def current_user_is_admin?
-    user_signed_in? && current_user.has_role?(:admin)
-  end
+
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -65,7 +63,7 @@ class Member::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def sign_up(resource_name, resource)
-    if !current_user_is_admin?
+    if current_member
       sign_in(resource_name, resource)
     end
   end
