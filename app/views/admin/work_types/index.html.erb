@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>業務種別一覧</h2>
+
+  <div class="work-types">
+    <div class="work-types__add">
+      <%= form_with model: @work_type_new, url: admin_work_types_path, local: true do |f| %>
+      <label for="work_type">業務種別</label>
+        <%= f.text_field :work_type %>
+        <%= f.submit "登録" %>
+      <% end %>
+    </div>
+    <div class="work-types__item">
+      <table>
+        <thead>
+          <tr>
+            <th>業務種別</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @work_types.each do |work_type| %>
+          <tr>
+            <%= form_with model: work_type, url: admin_work_type_path(work_type.id), method: :patch, local: true do |f| %>
+            <td><%= f.text_field :work_type %></td>
+            <td>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "公開", {value: :true, style: "display: inline-block;"} %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "非公開", {value: :false, style: "display: inline-block;"} %>
+            </td>
+            <td><%= f.submit "更新" %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

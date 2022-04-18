@@ -3,11 +3,11 @@
 <%= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member' do |f| %>
   <%= render "member/shared/error_messages", resource: resource %>
 
-  <div class="container">
-    <div class="container__left">
+  <div class="member">
+    <div class="member__left">
       <%= f.file_field :image %>
     </div>
-    <div class="container__right field">
+    <div class="membr__right field">
       <h5>店舗</h5>
       <div class="field__group">
         <%= f.collection_select :group_id, Group.all, :id, :shop_name, {prompt: "選択してください"} %>

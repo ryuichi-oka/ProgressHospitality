@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :groups, only: [:new, :create, :index, :show, :edit, :update]
 
     resources :members, only: [:new, :create, :show, :edit, :update]
+
+    resources :manuals, only: [:new, :create, :index, :show, :edit, :update]
+
+    resources :work_types, only: [:new, :create, :index, :edit, :update]
   end
 
   devise_for :members, skip: [:passwords], controllers: {

@@ -96,3 +96,35 @@
     color: #000;
   }
 }
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__list {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+}
+
+.memberList {
+
+
+
+  &__name {
+    display: inline-block;
+  }
+
+  &__edit {
+    display: inline-block;
+    background-color: #00ff00;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 2px 4px;
+    margin: 0 auto;
+    float: right;
+    color: #000;
+  }
+}

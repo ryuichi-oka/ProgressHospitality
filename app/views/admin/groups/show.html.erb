@@ -2,9 +2,9 @@
   <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
   <h1><%= @group.shop_name %>メンバー一覧</h1>
   <div><%= link_to "メンバー追加", new_member_registration_path %></div>
-  <div class="member">
+  <div class="members">
     <% @members.each do |member| %>
-    <div class="member__list memberList">
+    <div class="members__list memberList">
       <div class="memberList__image"><%= image_tag member.get_image(200, 200) %></div>
       <h4 class="memberList__name"><%= link_to (member.last_name + member.first_name), admin_member_path(member.id) %></h4>
       <%= link_to "編集", edit_admin_member_path(member.id), class: "memberList__edit" %>

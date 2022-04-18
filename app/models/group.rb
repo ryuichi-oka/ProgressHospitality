@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   has_one_attached :shop_image
 
   has_many :members
+  has_many :manuals
 
   def get_shop_image(width, height)
     unless shop_image.attached?

@@ -2,11 +2,15 @@
 
 <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch, local: true do |f| %>
 
-  <div class="container">
-    <div class="container__left">
-      <%= f.file_field :image %>
+  <div class="member">
+    <div class="member__left field">
+      <%= f.file_field :image %><br>
+      <h5>今月の目標</h5>
+      <div class="field__objective">
+        <%= f.text_area :objective, placeholder: "目標を入力" %>
+      </div>
     </div>
-    <div class="container__right field">
+    <div class="member__right field">
       <h5>店舗</h5>
       <div class="field__group">
         <%= f.collection_select :group_id, Group.all, :id, :shop_name, {prompt: "選択してください"} %>
@@ -37,6 +41,13 @@
       <div class="field__telephone">
         <h5>電話番号</h5>
         <%= f.text_field :telephone_number, placeholder: "00012345678" %>
+      </div>
+      <div class="field__active">
+        <h5>在籍ステータス</h5>
+        <%= f.radio_button :is_active, :true %>
+        <%= f.label :is_active, "在籍", {value: :true, style: "display: inline-clock;" } %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "退社", {value: :false, style: "display: inline-clock;" } %>
       </div>
       <div class="field__submit">
         <%= f.submit "更新" %>
