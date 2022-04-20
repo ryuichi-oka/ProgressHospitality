@@ -1,3 +1,133 @@
 // Place all the styles related to the admin/manuals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.manual {
+
+  &__form {
+    width: 80%;
+    margin: 0 auto;
+
+    &--work-type {
+      width: 20%;
+      height: 25px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    &--name {
+      width: 90%;
+      height: 30px;
+      margin-top: 10px;
+      padding: 0.3em;
+      margin-left: 20px;
+    }
+
+    &--body {
+      padding: 0.3em;
+      line-height: 1.2;
+      width: 90%;
+      height: 300px;
+      margin-top: 10px;
+      margin-left: 20px;
+      resize: none;
+    }
+
+    &--file {
+      width: 70%;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    &--status {
+      width: 60%;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    &--btn {
+      width: 15%;
+      height: 30px;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-left: 20px;
+      background-color: #fff;
+      border: 3px solid #00ff00;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 1px #c3c3c3;
+    }
+
+    &--btn:hover {
+      background-color: #e6e6e6;
+      box-shadow: none;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  &__item {
+    margin-top: 20px;
+  }
+
+
+}
+
+.field {
+
+  &__title {
+    border-bottom: 1px solid #c3c3c3;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    padding: 5px 15px;
+  }
+
+  &__text {
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+}
+
+.manualList {
+
+  table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #c3c3c3;
+  }
+
+  table {
+    border-top: none;
+    border-bottom: none;
+  }
+
+  table, th:first-child, td:first-child {
+    border-left: none;
+  }
+
+  table, th:last-child, td:last-child {
+    border-right: none;
+  }
+
+
+  &__table {
+    margin: 0 auto;
+
+  }
+
+  &__head {
+
+  }
+
+  &__body {
+    margin-top: 10px;
+  }
+
+  &__text {
+    padding-left: 30px;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2><span><%= @group.shop_name %></span>マニュアル一覧</h2>
+  <%= link_to "店舗に戻る", admin_group_path(@group.id) %>
+  <div class="manualList">
+    <table class="manualList__table">
+      <thead class="manualList__head">
+        <tr>
+          <th width="20%">業務種別</th>
+          <th width="40%">マニュアル名</th>
+          <th width="20%">添付ファイル</th>
+          <th width="20%">公開／非公開</th>
+        </tr>
+      </thead>
+      <tbody class="manualList__body">
+      <% @manuals.each do |manual| %>
+        <tr>
+          <td class="manualList__text--center"><%= manual.work_type.work_type %></td>
+          <td class="manualList__text"><%= link_to manual.name, admin_manual_path(manual.id) %></td>
+          <td class="manualList__text--center">
+            <% if manual.files.attached? %>
+              <p>添付ファイル有り</p>
+            <% else %>
+              <p>添付ファイル無し</p>
+            <% end %>
+          </td>
+          <td class="manualList__text--center">
+            <% if manual.is_active %>
+              <p>公開</p>
+            <% else %>
+              <p>非公開</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

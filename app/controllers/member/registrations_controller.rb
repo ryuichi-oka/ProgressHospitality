@@ -6,9 +6,10 @@ class Member::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @group_id = params[:group_id]
+    super
+  end
 
   # POST /resource
   # def create

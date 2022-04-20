@@ -2,6 +2,7 @@ class Admin::ManualsController < ApplicationController
 
   def new
     @manual = Manual.new
+    @group_id = params[:group_id]
   end
 
   def create
@@ -11,11 +12,14 @@ class Admin::ManualsController < ApplicationController
   end
 
   def index
-    @manuals = Manual.all
+    @group = Group.find(params[:group_id])
+    @manuals = @group.manuals.where(group_id: @group.id)
   end
 
   def show
     @manual = Manual.find(params[:id])
+    @group = @manual.group
+    @files = params[:files]
   end
 
   def edit
@@ -31,6 +35,6 @@ class Admin::ManualsController < ApplicationController
   private
 
   def manual_params
-    params.require(:manual).permit(:group_id, :work_type_id, :name, :body, :is_active)
+    params.require(:manual).permit(:group_id, :work_type_id, :name, :body, :is_active, files: [])
   end
 end

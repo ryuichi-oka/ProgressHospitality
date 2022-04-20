@@ -1,11 +1,11 @@
 <div class="container">
-  <%= link_to "店舗に戻る", admin_group_path(@group_id) %>
+  <%= link_to "×キャンセル", admin_manual_path(@manual.id) %>
   <h2>マニュアル新規登録</h2>
   <div class="manual">
     <div class="manual__form field">
-      <%= form_with model: @manual, url: admin_manuals_path, local: true do |f| %>
+      <%= form_with model: @manual, url: admin_manual_path(@manual.id), method: :patch, local: true do |f| %>
       <div class="field__group">
-        <%= f.hidden_field :group_id, value: @group_id %>
+        <%= f.hidden_field :group_id, value: @manual.group_id %>
       </div>
       <div class="field__work-type">
         <h4 class="field__title">業務種別</h4>

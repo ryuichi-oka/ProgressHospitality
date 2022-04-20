@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>マニュアル詳細</h2>
+    <%= link_to "⇐マニュアル一覧", admin_manuals_path(group_id: @group.id) %>
+  <div class="manual">
+    <div class="manual__form field">
+      <div class="manual__edit">
+        <%= link_to "編集", edit_admin_manual_path(@manual.id) %>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">マニュアル名称</h4>
+        <p class="field__text"><%= @manual.name %></p>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">業務種別</h4>
+        <p class="field__text"><%= @manual.work_type.work_type %></p>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">マニュアル概要</h4>
+        <p><%= simple_format(@manual.body, class: "field__text") %></p>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">添付ファイル</h4>
+        <p class="field__text">
+          <% if @manual.files.attached? %>
+            <% @files.each do |file| %>
+              <%= file.filename %>
+            <% end %>
+          <% else %>
+            <%= "添付ファイル無し" %>
+          <% end %>
+        </p>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">公開ステータス</h4>
+        <p class="field__text">
+          <% if @manual.is_active %>
+            <%= "公開" %>
+          <% else %>
+            <%= "非公開" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

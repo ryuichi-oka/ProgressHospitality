@@ -1,7 +1,9 @@
 <div class="container">
   <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
   <h1><%= @group.shop_name %>メンバー一覧</h1>
-  <div><%= link_to "メンバー追加", new_member_registration_path %></div>
+  <div><%= link_to "メンバー追加", new_member_registration_path(group_id: @group.id) %></div>
+  <div><%= link_to "マニュアル追加", new_admin_manual_path(group_id: @group.id) %></div>
+  <div><%= link_to "マニュアル一覧", admin_manuals_path(group_id: @group.id) %></div>
   <div class="members">
     <% @members.each do |member| %>
     <div class="members__list memberList">
