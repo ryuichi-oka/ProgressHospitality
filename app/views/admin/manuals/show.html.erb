@@ -40,6 +40,14 @@
           <% end %>
         </p>
       </div>
+      <div class="manual__item">
+        <h4 class="field__title">登録日時</h4>
+        <p class="field__text"><%= @manual.created_at.strftime("%Y/%m/%d(%w)%R") %></p>
+      </div>
+      <div class="manual__item">
+        <h4 class="field__title">最終更新日時</h4>
+        <p class="field__text"><%= @manual.updated_at.strftime("%Y/%m/%d(%w)%R") %></p>
+      </div>
     </div>
   </div>
 </div>

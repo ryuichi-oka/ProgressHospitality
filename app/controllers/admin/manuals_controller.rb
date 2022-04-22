@@ -8,7 +8,8 @@ class Admin::ManualsController < ApplicationController
   def create
     @manual = Manual.new(manual_params)
     @manual.save
-    redirect_to admin_manuals_path
+    @group = @manual.group
+    redirect_to admin_manuals_path(group_id: @group.id)
   end
 
   def index

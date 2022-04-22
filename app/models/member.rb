@@ -7,6 +7,8 @@ class Member < ApplicationRecord
   has_one_attached :image
 
   belongs_to :group
+  has_many :member_skills
+
 
   def get_image(width, height)
     unless image.attached?

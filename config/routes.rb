@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     resources :manuals, only: [:new, :create, :index, :show, :edit, :update]
 
     resources :work_types, only: [:new, :create, :index, :edit, :update]
+
+    resources :skills, only: [:new, :create, :index, :show, :edit, :update]
+
+    resources :skill_details, only: [:new, :create, :edit, :update, :destroy]
+
+    resources :member_skills, only: [:create, :update, :destroy]
   end
 
   devise_for :members, skip: [:passwords], controllers: {

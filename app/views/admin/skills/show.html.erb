@@ -1,0 +1,40 @@
+<div class="container">
+  <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
+  <h2>スキル詳細</h2>
+  <%= link_to "⇐スキル一覧", admin_skills_path(group_id: @group.id) %>
+  <%= link_to "編集", edit_admin_skill_path(@skill.id) %>
+  <div class="skillContent">
+    <div class="skillContent__heading">
+      <table>
+        <thead>
+          <tr>
+            <th width="30%">業務種別</th>
+            <th width="50%">スキル名称</th>
+            <th width="20%">ランク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @skill.work_type.work_type %></td>
+            <td><%= @skill.name %></td>
+            <td><%= @skill.rank %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="skillContent__main">
+      <div class="skillContent__main--left field">
+        <div class="skillContent__body">
+          <h4 class="field__title">スキル概要</h4>
+          <p class="field__text"><%= @skill.body %></p>
+        </div>
+        <div class="skillContent__terms">
+          <h4 class="field__title">習得条件</h4>
+          <p class="field__text"><%= @skill.terms %></p>
+        </div>
+      </div>
+      <div class="skillContent__main--right"></div>
+    </div>
+  </div>
+</div>

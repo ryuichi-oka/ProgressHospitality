@@ -1,6 +1,6 @@
 <div class="container">
   <%= link_to "×キャンセル", admin_manual_path(@manual.id) %>
-  <h2>マニュアル新規登録</h2>
+  <h2>マニュアル編集</h2>
   <div class="manual">
     <div class="manual__form field">
       <%= form_with model: @manual, url: admin_manual_path(@manual.id), method: :patch, local: true do |f| %>
