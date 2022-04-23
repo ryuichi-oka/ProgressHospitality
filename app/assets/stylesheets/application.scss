@@ -14,3 +14,12 @@
  *= require_self
  */
 
+.container {
+
+  &__element {
+
+    &--center {
+      margin: 0 auto;
+    }
+  }
+}

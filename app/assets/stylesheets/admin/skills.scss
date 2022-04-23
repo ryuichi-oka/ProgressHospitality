@@ -83,13 +83,19 @@
 }
 
 .skillContent {
+  width: 100%;
 
   &__heading {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 
+    table {
+      width: 90%;
+      margin: 0 auto;
+    }
+
     table, th, td {
-    border: none;
+      border: none;
     }
 
   th {
@@ -108,11 +114,50 @@
     justify-content: center;
 
     &--left {
-      width: 50%;
+      width: 47%;
+      margin: 0 auto;
     }
 
     &--right {
-      width: 50%;
+      width: 47%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.skillList {
+  width: 90%;
+
+  table, th, td {
+    border: none;
+  }
+
+  &__table {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__head {
+    background-color: #c3c3c3;
+  }
+
+  &__body {
+    margin-top: 10px;
+  }
+
+  &__item {
+    background-color: #fcfcfc;
+  }
+
+  &__item:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  &__text {
+    padding-left: 30px;
+
+    &--center {
+      text-align: center;
     }
   }
 }

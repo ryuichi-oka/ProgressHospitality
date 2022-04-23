@@ -1,7 +1,7 @@
 <div class="container">
   <h2><span><%= @group.shop_name %></span>マニュアル一覧</h2>
   <%= link_to "店舗に戻る", admin_group_path(@group.id) %>
-  <div class="manualList">
+  <div class="manualList container__element--center">
     <table class="manualList__table">
       <thead class="manualList__head">
         <tr>
@@ -32,8 +32,8 @@
               <p>非公開</p>
             <% end %>
           </td>
-          <td><%= manual.created_at.strftime("%Y/%m/%d(%w)%R") %></td>
-          <td><%= manual.updated_at.strftime("%Y/%m/%d(%w)%R") %></td>
+          <td><%= l manual.created_at, format: :long %></td>
+          <td><%= l manual.updated_at, format: :long %></td>
         </tr>
       <% end %>
       </tbody>

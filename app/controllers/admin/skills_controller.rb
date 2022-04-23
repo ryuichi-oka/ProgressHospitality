@@ -20,6 +20,10 @@ class Admin::SkillsController < ApplicationController
   def show
     @skill = Skill.find(params[:id])
     @group = @skill.group
+    @skill_details = SkillDetail.where(skill_id: @skill.id)
+    @skill_detail = SkillDetail.new
+    @skill_manuals = SkillManual.where(skill_id: @skill.id)
+    @skill_manual = SkillManual.new
   end
 
   def edit
@@ -38,8 +42,6 @@ class Admin::SkillsController < ApplicationController
     params.require(:skill).permit(:work_type_id, :group_id, :name, :rank, :body, :terms, :is_active)
   end
 
-  def skill_detail_prams
-    params.require(:skill_detail).permit(:skill_id, :body)
-  end
+
 
 end
