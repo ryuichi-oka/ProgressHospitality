@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_23_075412) do
+ActiveRecord::Schema.define(version: 2022_04_17_070019) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_075412) do
   create_table "member_skills", force: :cascade do |t|
     t.integer "member_id"
     t.integer "skill_id"
+    t.integer "level", default: 0
     t.boolean "is_acquire", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_075412) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "rank"
+    t.string "rank"
   end
 
   create_table "work_types", force: :cascade do |t|

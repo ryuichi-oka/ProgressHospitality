@@ -1,0 +1,37 @@
+<script>
+  let ctx = document.getElementById("myChart");
+  let myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+      data: {
+        labels:
+          [
+          <% member_skills.each do |member_skill| %>
+            '<%= member_skill.skill.name %>',
+          <% end %>
+          ],
+        datasets:
+          [
+            {
+            axis: 'y',
+            label: '達成度',
+            backgroundColor: 'rgba(71, 255, 130, 0.7)',
+            borderColor: 'rgba(90, 255, 130, 0.7)',
+            data:
+              [
+              <% member_skills.each do |member_skill| %>
+                <%= member_skill.level %>,
+              <% end %>
+              ]
+            },
+          ]
+      },
+      options: {
+        scales: {
+          ticks: {
+            borderWidth: 1,
+            suggestedMin: 0,
+          }
+        }
+      }
+  });
+</script>

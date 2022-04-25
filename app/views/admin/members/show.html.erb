@@ -24,13 +24,53 @@
         <%= @member.objective %>
       </div>
       <div class="member__skill skills">
-        <div class="skills__aquired">
+        <div class="skills__acquired acquired">
           <h3>習得スキル</h3>
+          <% @acquired.each do |acquire| %>
+          <div class="acquired__list">
+            <p class="acquired__item"><%= acquire.skill.name %></p>
+            <button class="acquired__destroy"><%= link_to "削除", admin_member_skill_path(acquire.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+          </div>
+          <% end %>
+          <div class="acquired__form">
+            <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+              <%= f.hidden_field :member_id, value: @member.id %>
+              <%= f.hidden_field :is_acquire, value: true %>
+              <div class="acquired__form--select">
+                <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
+              </div>
+              <div class="acquired__form--submit">
+                <%= f.submit "登録" %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="skill__request">
-         <h3>習得リクエスト</h3>
+        <div class="skill__challenge challenge">
+         <h3>未習得（チャレンジ）リスト</h3>
+          <% @challenges.each do |challenge| %>
+          <div class="challenge__list">
+            <p class="challenge__item"><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id) %></p>
+            <button class="challenge__destroy"><%= link_to "削除", admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+          </div>
+          <% end %>
+          <div class="challenge__form">
+            <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+              <%= f.hidden_field :member_id, value: @member.id %>
+              <%= f.hidden_field :is_acquire, value: false %>
+              <div class="challenge__form--select">
+                <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
+              </div>
+              <div class="challenge__form--submit">
+                <%= f.submit "登録" %>
+              </div>
+            <% end %>
         </div>
       </div>
+    </div>
+    <div class="skillChart">
+      <canvas id="myChart" width="100%">
+        <%= render 'chart', member_skills: @member_skills %>
+      </canvas>
     </div>
   </div>
 </div>

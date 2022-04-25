@@ -30,19 +30,17 @@
     height: 200px;
   }
 
-  &__skill {
-    height: 100%;
-  }
+
 }
 
 .skills {
   display: flex;
 
-  &__aquired {
+  &__acquired {
     width: 50%;
   }
 
-  &__request {
+  &__challenge {
     width: 50%;
   }
 }

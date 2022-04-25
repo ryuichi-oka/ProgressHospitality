@@ -4,6 +4,7 @@ class CreateMemberSkills < ActiveRecord::Migration[6.1]
 
       t.integer :member_id
       t.integer :skill_id
+      t.integer :level, default: 0
       t.boolean :is_acquire, null: false, default: false
 
       t.timestamps

@@ -58,13 +58,13 @@
           <% end %>
           <div class="skillDetails__form">
             <%= form_with model: @skill_detail, url: admin_skill_details_path, local: true do |f| %>
-            <%= f.hidden_field :skill_id, value: @skill.id %>
-            <div class="skillDetails__form--body">
-              <%= f.text_field :body %>
-            </div>
-            <div class="skillDetails__form--submit">
-              <%= f.submit "登録" %>
-            </div>
+              <%= f.hidden_field :skill_id, value: @skill.id %>
+              <div class="skillDetails__form--body">
+                <%= f.text_field :body %>
+              </div>
+              <div class="skillDetails__form--submit">
+                <%= f.submit "登録" %>
+              </div>
             <% end %>
           </div>
         </div>

@@ -3,6 +3,10 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @member_skills = MemberSkill.where(member_id: @member.id)
+    @acquired = @member_skills.where(is_acquire: true)
+    @challenges = @member_skills.where(is_acquire: false)
+    @member_skill = MemberSkill.new
   end
 
   def edit
