@@ -1,76 +1,81 @@
 <div class="container">
   <h2 class="container__title"><%= @member.last_name + @member.first_name %>さん</h2>
+  <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
+
 
   <div class="container__item member">
-    <div class="member__left">
-      <div class="member__image"><%= image_tag @member.get_image(200, 200) %></div>
-      <div class="member__info">
-        <%= @member.last_name + @member.first_name %><br>
-        <%= @member.birthday.strftime("%Y年%m月%d日") %><br>
-        <%= "〒" +@member.postal_code %><br>
-        <%= @member.address %><br>
-        <%= @member.telephone_number %><br>
-        <%= @member.email %><br>
-        <% if @member.is_active %>
-          <p>在籍</p>
-        <% else %>
-          <p>退社</p>
-        <% end %>
-      </div>
-    </div>
-    <div class="member__right">
-      <div class="member__objective">
-        <h3>今月の目標</h3>
-        <%= @member.objective %>
-      </div>
-      <div class="member__skill skills">
-        <div class="skills__acquired acquired">
-          <h3>習得スキル</h3>
-          <% @acquired.each do |acquire| %>
-          <div class="acquired__list">
-            <p class="acquired__item"><%= acquire.skill.name %></p>
-            <button class="acquired__destroy"><%= link_to "削除", admin_member_skill_path(acquire.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-          </div>
+    <div class="member__data">
+      <div class="member__data--left">
+        <div class="member__image"><%= image_tag @member.get_image(200, 200) %></div>
+        <div class="member__info">
+          <%= @member.last_name + @member.first_name %><br>
+          <%= @member.birthday.strftime("%Y年%m月%d日") %><br>
+          <%= "〒" +@member.postal_code %><br>
+          <%= @member.address %><br>
+          <%= @member.telephone_number %><br>
+          <%= @member.email %><br>
+          <% if @member.is_active %>
+            <p>在籍</p>
+          <% else %>
+            <p>退社</p>
           <% end %>
-          <div class="acquired__form">
-            <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
-              <%= f.hidden_field :member_id, value: @member.id %>
-              <%= f.hidden_field :is_acquire, value: true %>
-              <div class="acquired__form--select">
-                <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
-              </div>
-              <div class="acquired__form--submit">
-                <%= f.submit "登録" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="skill__challenge challenge">
-         <h3>未習得（チャレンジ）リスト</h3>
-          <% @challenges.each do |challenge| %>
-          <div class="challenge__list">
-            <p class="challenge__item"><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id) %></p>
-            <button class="challenge__destroy"><%= link_to "削除", admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-          </div>
-          <% end %>
-          <div class="challenge__form">
-            <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
-              <%= f.hidden_field :member_id, value: @member.id %>
-              <%= f.hidden_field :is_acquire, value: false %>
-              <div class="challenge__form--select">
-                <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
-              </div>
-              <div class="challenge__form--submit">
-                <%= f.submit "登録" %>
-              </div>
-            <% end %>
         </div>
       </div>
-    </div>
-    <div class="skillChart">
-      <canvas id="myChart" width="100%">
-        <%= render 'chart', member_skills: @member_skills %>
-      </canvas>
+      <div class="member__data--right">
+        <div class="member__objective">
+          <h3>今月の目標</h3>
+          <%= @member.objective %>
+        </div>
+        <div class="member__skill skills">
+          <div class="skills__acquired acquired">
+            <h3>習得スキル</h3>
+            <% @acquired.each do |acquire| %>
+            <div class="acquired__list">
+              <p class="acquired__item"><%= acquire.skill.name %></p>
+              <button class="acquired__destroy"><%= link_to "削除", admin_member_skill_path(acquire.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+            </div>
+            <% end %>
+            <div class="acquired__form">
+              <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+                <%= f.hidden_field :member_id, value: @member.id %>
+                <%= f.hidden_field :is_acquire, value: true %>
+                <div class="acquired__form--select">
+                  <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
+                </div>
+                <div class="acquired__form--submit">
+                  <%= f.submit "登録" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="skill__challenge challenge">
+           <h3>未習得（チャレンジ）リスト</h3>
+            <% @challenges.each do |challenge| %>
+            <div class="challenge__list">
+              <p class="challenge__item"><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id) %></p>
+              <button class="challenge__destroy"><%= link_to "削除", admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+            </div>
+            <% end %>
+            <div class="challenge__form">
+              <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+                <%= f.hidden_field :member_id, value: @member.id %>
+                <%= f.hidden_field :is_acquire, value: false %>
+                <div class="challenge__form--select">
+                  <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
+                </div>
+                <div class="challenge__form--submit">
+                  <%= f.submit "登録" %>
+                </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="skillChart">
+        <canvas id="myChart" width="100%" height="100px">
+          <%= render 'chart', member_skills: @member_skills %>
+        </canvas>
+      </div>
+      </div>
     </div>
   </div>
 </div>

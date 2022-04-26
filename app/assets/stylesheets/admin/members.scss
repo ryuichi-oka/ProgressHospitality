@@ -4,6 +4,10 @@
 
 .container {
 
+  &__member {
+    margin: 0 auto;
+  }
+
   &__title {
     margin-top: 20px;
   }
@@ -14,16 +18,34 @@
 }
 
 .member {
-  display: flex;
-  justify-content: center;
-  width: 90%;
 
-  &__left {
-    width: 30%;
+  &__form {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+
+    &--left {
+
+    }
+
+    &--right {
+
+    }
   }
 
-  &__right {
-    width: 70%;
+  &__data {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+
+    &--left {
+      width: 30%;
+    }
+
+    &--right {
+      width: 70%;
+    }
   }
 
   &__objective {

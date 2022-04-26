@@ -8,6 +8,7 @@ class Member::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @group_id = params[:group_id]
+    @group = Group.find_by(id: @group_id)
     super
   end
 
