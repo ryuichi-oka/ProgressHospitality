@@ -6,6 +6,8 @@
   <div><%= link_to "マニュアル一覧", admin_manuals_path(group_id: @group.id) %></div>
   <div><%= link_to "スキル追加", new_admin_skill_path(group_id: @group.id) %></div>
   <div><%= link_to "スキル一覧", admin_skills_path(group_id: @group.id) %></div>
+  <div><%= link_to "お知らせ一覧", admin_group_messages_path(group_id: @group.id) %></div>
+
 
   <div class="members">
     <% @members.each do |member| %>

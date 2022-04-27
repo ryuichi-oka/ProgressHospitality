@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :groups, only: [:new, :create, :index, :show, :edit, :update]
+    
+    resources :group_messages
 
     resources :members, only: [:new, :create, :show, :edit, :update]
 
