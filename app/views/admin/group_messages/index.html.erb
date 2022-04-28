@@ -1,7 +1,10 @@
 <div class="container">
   <h2>お知らせ一覧</h2>
   <div class="container__links">
-    <button><%= link_to "新規作成", new_admin_group_message_path(group_id: @group.id) %></button>
+    <div class="links">
+      <%= link_to "店舗に戻る", admin_group_path(@group.id), class: "links__item" %>
+      <%= link_to "新規作成", new_admin_group_message_path(group_id: @group.id), class: "links__item" %>
+    </div>
   </div>
   <div class="messageList container__element--center">
     <table class="messageList__table">
@@ -16,7 +19,7 @@
       <tbody class="messageList__body">
       <% @group_messages.each do |message| %>
         <tr class="messageList__item">
-          <td class="messageList__text"><%= link_to message.title, admin_group_messages_path(message.id) %></td>
+          <td class="messageList__text"><%= link_to message.title, admin_group_message_path(message.id) %></td>
           <td class="messageList__text--center">
             <% if message.files.attached? %>
               <p>〇</p>

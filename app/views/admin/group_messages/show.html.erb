@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>お知らせ詳細</h2>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to "一覧に戻る", admin_group_messages_path(group_id: @group.id), class: "links__item" %>
+      <%= link_to "編集", edit_admin_group_message_path(@group_message.id), class: "links__item" %>
+      <%= link_to "削除", admin_group_message_path(@group_message.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "links__item" %>
+    </div>
+  </div>
+
+  <div class="message">
+    <div class="message__head">
+      <h4>お知らせ情報</h4>
+      <div class="message__info">
+        <table>
+          <tr>
+            <th>件名</th>
+            <td><%= @group_message.title %></td>
+          </tr>
+          <tr>
+            <th>送信日</th>
+            <td><%= l @group_message.created_at, format: :long %></td>
+          </tr>
+          <tr>
+            <th>最終更新日</th>
+            <td><%= l @group_message.updated_at, format: :long %></td>
+          </tr>
+          <tr>
+            <th>添付ファイル</th>
+            <td>
+              <% if @group_message.files.attached? %>
+                <% @files.each do |file| %>
+                  <%= file.filename %>
+                <% end %>
+              <% else %>
+                <%= "" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="message__main">
+      <h4>お知らせ本文</h4>
+      <div class="message__body">
+        <%= simple_format(@group_message.body) %>
+      </div>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <button class="links__item"><%= link_to "一覧に戻る", admin_group_messages_path(group_id: @group.id) %></button>
+      <button class="links__item"><%= link_to "編集", edit_admin_group_message_path(@group_message.id) %></button>
+      <button class="links__item"><%= link_to "削除", admin_group_message_path(@group_message.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+    </div>
+  </div>
+</div>

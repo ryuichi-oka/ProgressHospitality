@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="container__title"><%= @member.last_name + @member.first_name %>さん</h2>
-  <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
+  <%= link_to "⇐店舗に戻る", admin_group_path(@group.id)  %>
 
 
   <div class="container__item member">
@@ -52,8 +52,13 @@
            <h3>未習得（チャレンジ）リスト</h3>
             <% @challenges.each do |challenge| %>
             <div class="challenge__list">
+              <%= form_with model: challenge, url: admin_member_skill_path(challenge.id), method: :patch do |f| %>
               <p class="challenge__item"><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id) %></p>
+                <span id="current_level"><%= challenge.level %></span>％
+                <%= f.range_field :level, :min=>0, :max=>100, id: "member_skill_level" %>
+                <%= f.submit "更新" %>
               <button class="challenge__destroy"><%= link_to "削除", admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+              <% end %>
             </div>
             <% end %>
             <div class="challenge__form">
@@ -67,15 +72,12 @@
                   <%= f.submit "登録" %>
                 </div>
               <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="skillChart">
-        <canvas id="myChart" width="100%" height="100px">
-          <%= render 'chart', member_skills: @member_skills %>
-        </canvas>
-      </div>
       </div>
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'range' %>

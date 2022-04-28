@@ -142,12 +142,12 @@ ActiveRecord::Schema.define(version: 2022_04_17_070019) do
     t.integer "work_type_id"
     t.integer "group_id"
     t.string "name", null: false
+    t.integer "rank", null: false
     t.text "body", null: false
     t.string "terms", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "rank"
   end
 
   create_table "work_types", force: :cascade do |t|

@@ -1,3 +1,128 @@
 // Place all the styles related to the admin/group_messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.group-message {
+
+  &__form {
+    width: 90%;
+    margin: 0 auto;
+
+    &--title {
+      width: 60%;
+      height: 30px;
+      margin-top: 10px;
+      padding: 0.3em;
+      margin-left: 20px;
+    }
+
+    &--body {
+      padding: 0.3em;
+      line-height: 1.2;
+      width: 90%;
+      height: 300px;
+      margin-top: 10px;
+      margin-left: 20px;
+      resize: none;
+    }
+
+    &--file {
+      width: 70%;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    &--btn {
+      width: 15%;
+      height: 30px;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-left: 20px;
+      background-color: #e6e6e6;
+      border: 3px solid #c3c3c3;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 1px #c3c3c3;
+    }
+
+    &--btn:hover {
+      background-color: #c3c3c3;
+      box-shadow: none;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+.messageList {
+  width: 90%;
+
+  table, th, td {
+    border: none;
+  }
+
+  &__table {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__head {
+    background-color: #c3c3c3;
+  }
+
+  &__body {
+    margin-top: 10px;
+  }
+
+  &__item {
+    background-color: #fcfcfc;
+  }
+
+  &__item:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  &__text {
+    padding-left: 30px;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}
+
+.message {
+
+  &__head {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 10px;
+  }
+
+  &__info {
+    background-color: #fff;
+    padding: 20px 10px;
+
+    tr {
+      line-height: 35px;
+    }
+
+    th {
+      text-align: left;
+      width: 40%;
+      font-weight: 400;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 10px;
+  }
+
+  &__body {
+    background-color: #fff;
+    padding: 5px 10px;
+    min-height: 300px;
+  }
+}

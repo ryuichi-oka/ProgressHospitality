@@ -15,6 +15,9 @@ class Admin::MemberSkillsController < ApplicationController
     @member_skill = MemberSkill.find(params[:id])
     @member_skill.update(member_skill_params)
     @member = @member_skill.member
+    if @member_skill.level == 100
+      @member_skill.update(is_acquire: true)
+    end
     redirect_to admin_member_path(@member.id)
   end
 
