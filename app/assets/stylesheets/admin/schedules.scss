@@ -1,0 +1,50 @@
+// Place all the styles related to the admin/schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.monthSelect {
+  margin-bottom: 20px;
+}
+
+.schedules {
+
+  &__table {
+    overflow-x: scroll;
+  }
+
+  table {
+    white-space: nowrap;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table th, table td {
+    border: 1px solid #797979;
+  }
+
+  &__thead {
+    height: 30px;
+
+    &--name {
+      min-width: 150px;
+    }
+
+    &--day {
+      min-width: 70px;
+    }
+  }
+
+  &__tbody {
+
+    tr {
+      height: 60px;
+    }
+
+    &--name {
+      padding-left: 10px;
+    }
+
+    &--day {
+    }
+  }
+}

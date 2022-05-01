@@ -1,7 +1,7 @@
 <div class="container">
-  <h2>お知らせ一覧</h2>
   <div class="container__links">
     <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>お知らせ一覧</h4>
       <%= link_to "店舗に戻る", admin_group_path(@group.id), class: "links__item" %>
       <%= link_to "新規作成", new_admin_group_message_path(group_id: @group.id), class: "links__item" %>
     </div>

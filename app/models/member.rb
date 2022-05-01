@@ -8,6 +8,8 @@ class Member < ApplicationRecord
 
   belongs_to :group
   has_many :member_skills
+  has_many :comments
+  has_many :shifts
 
 
   def get_image(width, height)

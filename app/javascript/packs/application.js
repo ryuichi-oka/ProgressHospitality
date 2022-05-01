@@ -10,7 +10,8 @@ import "channels"
 import 'jquery'
 import 'modal.js'
 import 'chart.js'
-// import 'range.js'
+import "../stylesheets/application"
+import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
 Turbolinks.start()

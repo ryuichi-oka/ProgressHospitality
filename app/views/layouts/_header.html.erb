@@ -1,8 +1,7 @@
 <header>
   <div class="header">
-    <span class="header__logo"><%= image_tag 'logo.jpg', size: '100x70' %></span>
     <% if admin_signed_in? %>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header__logout" %>
     <% elsif member_signed_in? %>
       <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
     <% end %>

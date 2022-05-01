@@ -21,6 +21,7 @@ class Admin::GroupMessagesController < ApplicationController
     @group_message = GroupMessage.find(params[:id])
     @group = @group_message.group
     @files = params[:files]
+    @comments = @group_message.comments.all
   end
 
   def edit

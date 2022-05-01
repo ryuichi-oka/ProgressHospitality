@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :groups, only: [:new, :create, :index, :show, :edit, :update]
-    
-    resources :group_messages
+
+    resources :group_messages do
+      resources :comments, only: [:create, :destroy]
+    end
 
     resources :members, only: [:new, :create, :show, :edit, :update]
 
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
     resources :member_skills, only: [:create, :update, :destroy]
 
     resources :skill_manuals, only: [:create, :destroy]
+
+    resources :schedules, only: [:new, :create, :index, :show]
   end
 
   devise_for :members, skip: [:passwords], controllers: {

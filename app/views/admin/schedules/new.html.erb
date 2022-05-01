@@ -1,0 +1,17 @@
+<h2><%= "#{@member.first_name} #{@member.last_name}" %></h2>
+<%= form_with model: @shift, url: admin_schedules_path(member_id: @member.id), method: :post do |f| %>
+  <% @schedule_data.each do |day| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= day.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="col-md-8">
+        <%= f.select "#{day}[hour]", 9..24, { include_blank: '' } %>
+        <%= f.select "#{day}[min]", [00, 15, 30, 45], { include_blank: '' } %>
+        <%= f.check_box "#{day}[holiday]", {} , true, false %>
+        <%= f.text_field "#{day}[comment]" %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
