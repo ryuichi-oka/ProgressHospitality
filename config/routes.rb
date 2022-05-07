@@ -28,7 +28,10 @@ Rails.application.routes.draw do
 
     resources :skill_manuals, only: [:create, :destroy]
 
-    resources :schedules, only: [:new, :create, :index, :show]
+    resources :schedules, only: [:new, :create, :index]
+    get "/schedules/shift_edit" => "schedules#shift_edit", as: "shift_edit"
+    patch "schedules/shift_update" => "schedules#shift_update", as: "shift_update"
+
   end
 
   devise_for :members, skip: [:passwords], controllers: {

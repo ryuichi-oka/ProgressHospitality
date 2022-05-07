@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_112213) do
+ActiveRecord::Schema.define(version: 2022_05_07_091208) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -135,11 +135,12 @@ ActiveRecord::Schema.define(version: 2022_04_30_112213) do
   create_table "shifts", force: :cascade do |t|
     t.integer "member_id"
     t.datetime "shift"
-    t.boolean "holiday"
+    t.boolean "holiday", default: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "month"
+    t.datetime "shift_end"
     t.index ["member_id"], name: "index_shifts_on_member_id"
   end
 

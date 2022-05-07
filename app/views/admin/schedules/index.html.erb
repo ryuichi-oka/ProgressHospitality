@@ -33,6 +33,7 @@
           <tr>
             <td class="schedules__tbody--name">
               <%= link_to (member.last_name + member.first_name), admin_member_path(member.id), data: {"turbolinks" => false} %>
+              <%= link_to "Edit", admin_shift_edit_path(member_id: member.id, month: @month) %>
               <%= link_to 'New', new_admin_schedule_path(member_id: member.id, month: @month) %>
             </td>
             <% member.shifts.where(month: @from_date..@to_date).each do |shift| %>
@@ -40,7 +41,8 @@
                 <% if shift.shift == nil %>
                   <%= '' %>
                 <% else %>
-                  <%= shift.shift.to_time.strftime("%H:%M") %>
+                  <%= shift.shift.to_time.strftime("%H:%M") %><br>
+                  <%= shift.shift_end.to_time.strftime("%H:%M") %>
                 <% end %>
               </td>
               <% end %>
