@@ -34,6 +34,21 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :member do
+    resources :members, only: [:index, :show, :edit, :update]
+
+    resources :member_skills, only: [:create, :destroy]
+
+    resources :manuals, only: [:index, :show]
+
+    resources :skills, only: [:index, :show]
+
+    resources :group_messages, only: [:index, :show] do
+      resource :checks, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
+  end
+
   devise_for :members, skip: [:passwords], controllers: {
     registrations: "member/registrations",
     sessions: "member/sessions"

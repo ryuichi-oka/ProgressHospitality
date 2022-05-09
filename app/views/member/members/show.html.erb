@@ -1,0 +1,88 @@
+<div class="container">
+  <h2 class="container__title"><%= current_member.last_name + current_member.first_name %>さん</h2>
+  <%= link_to "登録情報編集", edit_member_member_path(@member.id) %>
+  <%= link_to "マニュアル一覧", member_manuals_path %>
+  <%= link_to "スキル一覧", member_skills_path %>
+  <%= link_to "お知らせ一覧", member_group_messages_path %>
+
+
+  <div class="container__item member">
+    <div class="member__data">
+      <div class="member__data--left">
+        <div class="member__image"><%= image_tag @member.get_image(200, 200) %></div>
+        <div class="member__info">
+          <%= current_member.last_name + current_member.first_name %><br>
+          <%= current_member.birthday.strftime("%Y年%m月%d日") %><br>
+          <%= "〒" + current_member.postal_code %><br>
+          <%= current_member.address %><br>
+          <%= current_member.telephone_number %><br>
+          <%= current_member.email %><br>
+        </div>
+      </div>
+      <div class="member__data--right">
+        <div class="member__objective">
+          <h3 style="display: inline-block;">今月の目標</h3>
+          <% if current_member.objective.empty? %>
+            <button class="js-modal-open">登録</button>
+            <div class="modal js-modal">
+              <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                  <h4>目標登録</h4>
+                  <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
+                    <div class="modal__form--txt"><%= f.text_field :objective, class: "modal__form--txt" %></div>
+                    <div><%= f.submit "登録", class: "modal__form--sub" %></div>
+                  <% end %>
+                </div>
+            </div>
+          <% else %>
+            <button class="js-modal-open">変更</button>
+            <div class="modal js-modal">
+              <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                  <h4>目標変更</h4>
+                  <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
+                    <div class="modal__form--txt"><%= f.text_field :objective, class: "modal__form--txt" %></div>
+                    <div><%= f.submit "登録", class: "modal__form--sub" %></div>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+          <div><%= current_member.objective %></div>
+        </div>
+        <div class="member__skill skills">
+          <div class="skills__acquired acquired">
+            <h3>習得スキル</h3>
+            <% @acquired.each do |acquire| %>
+            <div class="acquired__list">
+              <p class="acquired__item"><%= acquire.skill.name %></p>
+            </div>
+            <% end %>
+          </div>
+          <div class="skill__challenge challenge">
+           <h3>未習得（チャレンジ）リスト</h3>
+            <% @challenges.each do |challenge| %>
+            <div class="challenge__list">
+              <p class="challenge__item"><%= link_to challenge.skill.name, member_skill_path(challenge.skill.id) %></p>
+                <span id="current_level">達成度<%= challenge.level %></span>％
+              <button class="challenge__destroy"><%= link_to "削除", member_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+            </div>
+            <% end %>
+            <div class="challenge__form">
+              <%= form_with model: @member_skill, url: member_member_skills_path, local: true do |f| %>
+                <%= f.hidden_field :member_id, value: @member.id %>
+                <%= f.hidden_field :is_acquire, value: false %>
+                <div class="challenge__form--select">
+                  <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
+                </div>
+                <div class="challenge__form--submit">
+                  <%= f.submit "登録" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

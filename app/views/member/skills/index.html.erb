@@ -1,0 +1,28 @@
+<div class="container">
+  <%= link_to "マイページ", member_member_path(current_member.id) %>
+  <h2><%= @group.shop_name + "スキル一覧" %></h2>
+  <div class="skillList container__element--center">
+    <table class="skillList__table">
+      <thead class="skillList__head">
+        <tr>
+          <th width="10%">業務種別</th>
+          <th width="30%">スキル名称</th>
+          <th width="10%">ランク</th>
+          <th width="20%">登録日時</th>
+          <th width="20%">最終更新日時</th>
+        </tr>
+      </thead>
+      <tbody class="skillList__body">
+        <% @skills.each do |skill| %>
+        <tr class="skillList__item">
+          <td class="skillList__text--center"><%= skill.work_type.work_type %></td>
+          <td class="skillList__text"><%= link_to skill.name, member_skill_path(skill.id) %></td>
+          <td class="skillList__text--center"><%= skill.rank_i18n %></td>
+          <td><%= l skill.created_at, format: :long %></td>
+          <td><%= l skill.updated_at, format: :long %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

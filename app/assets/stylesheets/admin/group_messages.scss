@@ -89,6 +89,14 @@
       text-align: center;
     }
   }
+
+  &__link {
+
+    &--red {
+      color: red;
+      font-weight: bold;
+    }
+  }
 }
 
 .message {

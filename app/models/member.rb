@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   belongs_to :group
   has_many :member_skills
   has_many :comments
+  has_many :checks
   has_many :shifts
 
 

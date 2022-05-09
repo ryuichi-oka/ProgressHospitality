@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_groups_path
     when Member
-      root_path
+      member_member_path(current_member.id)
     end
   end
 

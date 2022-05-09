@@ -15,10 +15,34 @@
  */
 .header {
   height: 100px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  justify-content: space-between;
+  align-items: center;
 
-  &__logout {
+
+  &__logo {
+    font-size: 30px;
+    width: 30%;
+  }
+
+  &__items {
+    width: 70%;
+  }
+}
+
+.nav {
+
+  &__links {
+    list-style: none;
     display: flex;
-    justify-content: right;
+  }
+
+  &__item {
+    margin: 0 10px;
   }
 }
 
@@ -52,12 +76,17 @@
 
   &__title {
     margin-bottom: 10px;
+
+    &--red {
+      color: red;
+      margin-bottom: 10px;
+    }
   }
 
   &__item {
     color: #000;
     display: inline-block;
-    width: 100px;
+    width: 120px;
     text-align-last: justify;
     font-size: 13px;
     margin-left: 10px;

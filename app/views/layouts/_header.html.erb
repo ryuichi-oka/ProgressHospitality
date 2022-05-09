@@ -1,9 +1,35 @@
 <header>
   <div class="header">
+    <div class="header__logo">
+      <h3>
+        Progress<br>
+        Hospitality
+      </h3>
+    </div>
     <% if admin_signed_in? %>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header__logout" %>
+      <div class="header__items nav">
+        <ul class="nav__links">
+          <li class="nav__item"></li>
+          <li class="nav__item"></li>
+          <li class="nav__item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </ul>
+      </div>
     <% elsif member_signed_in? %>
-      <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+      <div class="header__items nav">
+        <ul class="nav__links">
+          <li class="nav__item"><%= link_to "マイページ", member_member_path(current_member.id) %></li>
+          <li class="nav__item"></li>
+          <li class="nav__item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="header__items nav">
+        <ul class="nav__links">
+          <li class="nav__item"></li>
+          <li class="nav__item"></li>
+          <li class="nav__item"></li>
+        </ul>
+      </div>
     <% end %>
   </div>
 </header>

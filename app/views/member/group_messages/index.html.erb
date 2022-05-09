@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>お知らせ一覧</h4>
+    </div>
+  </div>
+  <div class="messageList container__element--center">
+    <table class="messageList__table">
+      <thead class="messageList__head">
+        <tr>
+          <th width="30%">件名</th>
+          <th width="10%">添付ファイル</th>
+          <th width="20%">登録日時</th>
+          <th width="20%">最終更新日時</th>
+        </tr>
+      </thead>
+      <tbody class="messageList__body">
+      <% @group_messages.each do |message| %>
+        <tr class="messageList__item">
+          <td class="messageList__text">
+            <% if message.checked_by?(current_member) %>
+              <%= link_to message.title, member_group_message_path(message.id) %>
+            <% else %>
+              <%= link_to(message.title, member_group_message_path(message.id), class: "messageList__link--red") %>
+            <% end %>
+          </td>
+          <td class="messageList__text--center">
+            <% if message.files.attached? %>
+              <p>〇</p>
+            <% else %>
+              <p></p>
+            <% end %>
+          </td>
+          <td><%= l message.created_at, format: :long %></td>
+          <td><%= l message.updated_at, format: :long %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
