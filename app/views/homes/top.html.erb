@@ -1,104 +1,70 @@
 <div class="top">
   <div class="content">
-    <h1 class="content__title">
-      Progress<br>
-      　Hospitality
-    </h1>
-    <p class="content__text">
-      より良い教育がより良いサービスへとつながる<br>
-      従業員教育を手助けする店舗管理システム
-    </p>
-  </div>
-  <div class="button">
-    <%= link_to "管理者ログイン", new_admin_session_path, class: "button__admin" %>
-    <%= link_to "メンバーログイン", new_member_session_path, class: "button__member" %>
+    <div class="content__head">
+      <p class="content__head--txt">教育管理をより効率的に！接客レベルの向上を目指して</p>
+      <h1 class="content__head--title"><span>P</span>rogress<span>H</span>ospitality</h1>
+    </div>
+    <div class="content__login">
+      <div class="content__login--btn button">
+        <%= link_to(new_admin_session_path, class: "button__admin") do %>
+          <span><i class="fas fa-sign-in-alt"></i>管理者ログイン</span>
+        <% end %>
+      </div>
+      <div class="content__login--btn button">
+        <%= link_to(new_member_session_path, class: "button__member") do %>
+          <span><i class="fas fa-sign-in-alt"></i>メンバーログイン</span>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="feature">
-  <h2 class="feature__title">従業員のスキルの見える化</h2>
-  <div class="feature__body function">
-    <p class="function__text">
-      店舗が従業員に正しい評価を行うため、<br>
-      そして働く人が向上心を持つために<br>
-      そんな思いをカタチにしたシステムです。<br>
-      働く人のモチベーション・接客レベルの向上で<br>
-      店舗の活性化とお客様の満足度UPに繋がります。
+  <h2 class="feature__title">従業員教育の見える化を実現</h2>
+  <div class="feature__body">
+    <p class="feature__text">
+      店舗が従業員に<span>正しい評価</span>を行うため、そして働く人が<span>向上心</span>を持つために、そんな思いをカタチにしたシステムです。<br>
+      働く人のモチベーション・接客レベルの向上で<span>店舗の活性化とお客様の満足度UP</span>に繋がります。
     </p>
-    <div class="function__image"></div>
-  </div>
-  <ul class="feature__body functionList">
-    <li class="functionList__item">
-      <h4 class="functionList__title">スキルアップリクエスト</h4>
-      <p class="functionList__text">
-        従業員の皆さんが習得したいスキルを<br>
-        リクエストする機能。<br>
-        一人ひとりが目標を持って取り組む<br>
-        ことができる仕組みができます。<br>
-        働く人主体の教育システムで<br>
-        モチベーションアップ！
-      </p>
-    </li>
-    <li class="functionList__item">
-      <h4 class="functionList__title">スキル習得度見える化</h4>
-      <p class="functionList__text">
-        それぞれのスキルの習得度を<br>
-        グラフで見える化。<br>
-        100%習得を目指しての教育計画を。<br>
-        また、スキルごとにランクをつけて<br>
-        熟練度を段階ごとに管理する機能も。
-      </p>
-    </li>
-    <li class="functionList__item">
-      <h4 class="functionList__title">必要スキルの公開</h4>
-      <p class="functionList__text">
-        「何を覚えればいいんだろう？」<br>
-        「頑張って時給を上げたい！」<br>
-        といった従業員の皆さんの気持ちを<br>
-        反映した機能。<br>
-        接客・作業レベルの向上へと繋げる<br>
-        ために必要スキルを明確にしよう。
-      </p>
-    </li>
-  </ul>
-  <h2 class="feature__title">その他便利機能</h2>
-  <div class="feature__body--gray function">
-    <div class="function__body">
-      <h4 class="function__title">シフト管理機能</h4>
-      <p class="function__text">
-        シフト希望の提出やシフトの作成、<br>
-        作成したシフトの公開といった機能が<br>
-        すべて揃っています。
-      </p>
-    </div>
-    <div class="function__image">
-      <p>画像</p>
-    </div>
-  </div>
-  <div class="feature__body--reverse function">
-    <div class="function__body">
-      <h4 class="function__title">連絡機能</h4>
-      <p class="function__text">
-        店舗から従業員への連絡だけでなく、<br>
-        全員が使えるコメント機能や目を通したか確認できる<br>
-        既読チェック機能が備わっています。
-      </p>
-    </div>
-    <div class="function__image">
-      <p>画像</p>
-    </div>
-  </div>
-  <div class="feature__body--gray function">
-    <div class="function__body">
-      <h4 class="function__title">マニュアル・レシピ登録機能</h4>
-      <p class="function__text">
-        つい忘れがちなマニュアルやレシピの伝達。<br>
-        登録・更新するだけでメンバーに通知される<br>
-        システムで伝達漏れを防ぎます。
-      </p>
-    </div>
-    <div class="function__image">
-      <p>画像</p>
-    </div>
+    <ul class="functionList">
+      <li class="functionList__item">
+        <h4 class="functionList__title">スキルアップリクエスト</h4>
+        <p class="functionList__text">
+          従業員の皆さんが習得したいスキルをリクエストする機能。
+          一人ひとりが目標を持って取り組むことができる仕組みができます。
+          働く人主体の教育システムでモチベーションアップ！
+        </p>
+      </li>
+      <li class="functionList__item">
+        <h4 class="functionList__title">スキル習得度見える化</h4>
+        <p class="functionList__text">
+          それぞれのスキルの習得度を数字で見える化。
+          100%習得を目指しての教育計画を。
+          また、スキルごとにランクをつけて熟練度を段階ごとに管理する機能も。
+        </p>
+      </li>
+      <li class="functionList__item">
+        <h4 class="functionList__title">必要スキルの公開</h4>
+        <p class="functionList__text">
+          「何を覚えればいいんだろう？」「頑張って時給を上げたい！」
+          といった従業員の皆さんの気持ちを反映した機能。
+          接客・作業レベルの向上へと繋げるために必要スキルを明確に。
+        </p>
+      </li>
+      <li class="functionList__item">
+        <h4 class="functionList__title">連絡機能</h4>
+        <p class="functionList__text">
+          店舗から従業員への連絡だけでなくメンバー全員が利用できるコメント機能も搭載。
+          また確認済みかどうかが一目で分かる為、重要な連絡が確実に伝えられます。
+        </p>
+      </li>
+      <li class="functionList__item">
+        <h4 class="functionList__title">マニュアル・レシピ登録</h4>
+        <p class="functionList__text">
+          つい忘れがちなマニュアル・レシピを更新した際の伝達。
+          メンバー全員が閲覧可能な管理システムで伝達漏れを防ぐことができます。
+        </p>
+      </li>
+    </ul>
   </div>
 </div>
 

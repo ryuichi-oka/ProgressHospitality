@@ -8,30 +8,60 @@
 }
 
 .top {
-  background-color: #009D5B;
+  background-color: #a9ceec;
   padding: 70px 50px 50px;
-  height: 300px;
+  height: 350px;
 }
 
 .content {
-  display: flex;
-  position: relative;
 
-  &__title {
-    color: #fff;
-    font-style: italic;
-    font-size: 40px;
+  &__head {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+
+
+    &--txt {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &--title {
+      font-size: 50px;
+      font-style: italic;
+    }
+
+    &--title span {
+      font-size: 60px;
+      color: #1254a1;
+    }
   }
 
-  &__text {
-    color: #fff;
-    font-weight: bold;
-    margin: 20px auto;
+  &__head::before {
+    content: "";
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-shadow: 1px 2px 2px #000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    background-color: #fff;
+    transform: skewX(-20deg);
+    box-shadow: 5px 5px 5px #cecece;
+    z-index: -1;
+  }
+
+  &__login {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
+    &--btn {
+      margin: 0 15px;
+    }
   }
 }
 
@@ -39,22 +69,22 @@
   text-align: center;
 
   &__admin {
-    padding: 5px 20px;
-    color: #000;
+    padding: 15px 20px;
+    color: #1254a1;
     font-weight: bold;
-    border: 1px solid #f68b1f;
-    border-radius: 5px;
-    background-color: #f68b1f;
+    border: 1px solid #ffde00;
+    border-radius: 35px;
+    background-color: #ffde00;
     text-decoration: none;
   }
 
   &__member {
-    padding: 5px 20px;
-    color: #000;
+    padding: 15px 18px;
+    color: #fff;
     font-weight: bold;
-    border: 1px solid #f68b1f;
-    border-radius: 5px;
-    background-color: #f68b1f;
+    border: 1px solid #1254a1;
+    border-radius: 35px;
+    background-color: #1254a1;
     text-decoration: none;
   }
 }
@@ -62,15 +92,20 @@
 .feature {
 
   &__title {
-    font-weight: bold;
-    border-bottom: 1px solid #ccc;
-    margin-top: 50px;
+    width: 600px;
+    color: #ec3f64;
+    text-align: center;
+    margin: 50px auto 0;
+    font-size: 40px;
+    // border-bottom: 2px solid #ccc;
     padding-left: 20px;
   }
 
   &__body {
-    padding: 10px;
+    width: 100%;
+    padding: 0px 50px;
     margin: 0 auto;
+    background-color: #a9ceec;
 
     &--gray {
       background-color: #e7e7e7;
@@ -80,74 +115,63 @@
     &--reverse {
       display: flex;
       flex-flow: row-reverse;
-    padding: 10px;
+      padding: 10px;
     }
-  }
-}
-
-.function {
-  width: 100%;
-  display: flex;
-  border-top: 1px solid #c8c8c8;
-  border-bottom: 1px solid #c8c8c8;
-  height: 300px;
-
-  &__body {
-    width: 50%;
-  }
-
-  &__title {
-    color: #333c5e;
-    padding-top: 20px;
-    padding-left: 10px;
   }
 
   &__text {
-    width: 90%;
-    padding-top: 40px;
-    padding-left: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
   }
 
-  &__image {
-    width: 45%;
-    height: 90%;
-    border: 1px solid #c8c8c8;
-    margin: auto;
+  &__text span {
+    font-size: 20px;
+    color: #ec3f64;
   }
 }
 
 .functionList {
-  width: 90%;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 0;
 
   &__item {
-    border: 1px solid #c8c8c8;
-    width: 32%;
-    height: 250px;
+    background-color: #fff;
+    width: 30%;
+    height: 300px;
     list-style: none;
     margin-top: 20px;
     margin-left: 3%;
+    border-radius: 10px;
+  }
+
+  &__item:hover {
     box-shadow: 5px 5px 5px #c8c8c8;
-    border-radius: 3px;
   }
 
   &__item:first-child {
     margin-left: 0;
   }
 
+  &__item:nth-child(4) {
+    margin-left: 0;
+  }
   &__title {
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
     font-weight: bold;
-    color: #333c5e;
-    padding-top: 10px;
+    color: #1254a1;
+    margin-top: 30px;
   }
 
   &__text {
     padding-top: 20px;
-    padding-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 15px;
     line-height: 30px;
   }
