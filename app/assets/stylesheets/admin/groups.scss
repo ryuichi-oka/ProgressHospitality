@@ -2,7 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.modal {
+.addGroup {
+  font-weight: bold;
+  width: 200px;
+  font-size: 17px;
+  display: block;
+  margin: 0 20px 0 auto;
+  padding: 5px 20px;
+  background-color: #a9ceec;
+  border: 1px solid #a9ceec;
+  border-radius: 10px;
+  text-align-last: justify;
+  transition: 0.3s;
+}
+
+.addGroup:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.group-modal {
   display: none;
   height: 100vh;
   position: fixed;
@@ -16,60 +35,79 @@
     width: 100%;
   }
 
+  &__title {
+    text-align: center;
+  }
+
   &__content {
     padding: 20px;
     background-color: #fff;
     width: 25%;
     height: 230px;
     position: absolute;
-    top: 20%;
-    left: 20%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
   }
 
   &__form {
 
-    &--img {
-      height: 30px;
-      margin-top: 10px;
-    }
 
     &--txt {
-      height: 30px;
-      width: 90%;
+      font-size: 20px;
+      height: 40px;
+      width: 100%;
       margin-top: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 3px;
     }
 
     &--sub {
-      height: 30px;
-      margin-top: 20px;
-      display       : inline-block;
-      border-radius : 5px;
-      font-size     : 10pt;
-      text-align    : center;
-      cursor        : pointer;
-      padding       : 5px 15px;
-      background    : #00ff00;
-      color         : #000;
+      font-weight: bold;
+      height: 40px;
+      margin: 30px auto 10px;
+      display: block;
+      border: 1px solid #a9ceec;
+      border-radius: 10px;
+      font-size: 10pt;
+      text-align: center;
+      padding: 5px 15px;
+      background-color: #a9ceec;
+      color: #000;
+    }
+
+    &--sub:hover {
+      cursor: pointer;
+      background-color: #fff;
     }
   }
 }
 
 .close-btn {
-  display       : inline-block;
-  border-radius : 5px;
-  font-size     : 10pt;
-  text-align    : center;
-  cursor        : pointer;
-  padding       : 7px 16px;
-  background    : #ff4d4d;
-  color         : #ffffff;
+  display: inline-block;
+  border: 1px solid #ff4d4d;
+  border-radius: 5px;
+  font-size: 10pt;
+  text-align: center;
+  padding: 5px 16px;
+  background: #ff4d4d;
+  color: #fff;
+  text-align-last: justify;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #fff;
+  color: #ff4d4d;
+  cursor: pointer;
 }
 
 .group {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   &__list {
     margin-left: 20px;
@@ -78,24 +116,61 @@
 }
 
 .groupList {
+  width: 250px;
+  border: 1px solid #3e3e3e;
+  border-radius: 20px;
+  height: 60px;
+  text-align: center;
+  background-color: #f0f0f0;
 
   &__name {
-    display: inline-block;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
   }
 
-  &__edit {
-    display: inline-block;
-    background-color: #fff;
-    border: 3px solid #00ff00;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 2px 4px;
-    margin: 0 auto;
-    float: right;
-    color: #000;
-  }
+  // &__edit {
+  //   display: inline-block;
+  //   background-color: #fff;
+  //   border: 3px solid #00ff00;
+  //   border-radius: 5px;
+  //   font-weight: bold;
+  //   cursor: pointer;
+  //   text-decoration: none;
+  //   padding: 2px 4px;
+  //   margin: 0 auto;
+  //   float: right;
+  //   color: #000;
+  // }
+}
+
+.groupList:hover {
+  background-color: #e7e7e7;
+  cursor: pointer;
+}
+
+.addMember {
+  color: #000;
+  font-weight: bold;
+  width: 200px;
+  font-size: 17px;
+  display: block;
+  margin: 0 20px 0 auto;
+  padding: 5px 20px;
+  background-color: #a9ceec;
+  border: 1px solid #a9ceec;
+  border-radius: 10px;
+  text-align-last: justify;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.addMember:hover {
+  cursor: pointer;
+  background-color: #fff;
 }
 
 .members {
@@ -103,6 +178,7 @@
   flex-wrap: wrap;
 
   &__list {
+    width: 200px;
     margin-left: 20px;
     margin-top: 20px;
   }

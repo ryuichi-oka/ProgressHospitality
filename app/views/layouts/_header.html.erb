@@ -9,9 +9,14 @@
     <% if admin_signed_in? %>
       <div class="header__items nav">
         <ul class="nav__links">
-          <li class="nav__item"></li>
-          <li class="nav__item"></li>
+          <% if params[:group_id] %>
+          <li class="nav__item"><%= link_to "マニュアル一覧", admin_manuals_path(group_id: @group.id) %></li>
+          <li class="nav__item"><%= link_to "スキル一覧", admin_skills_path(group_id: @group.id) %></li>
+          <li class="nav__item"><%= link_to "お知らせ一覧", admin_group_messages_path(group_id: @group.id) %></li>
           <li class="nav__item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <% else %>
+          <li class="nav__item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <% end %>
         </ul>
       </div>
     <% elsif member_signed_in? %>

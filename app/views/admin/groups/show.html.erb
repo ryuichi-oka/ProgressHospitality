@@ -1,13 +1,10 @@
 <div class="container">
   <%= link_to "⇐店舗一覧に戻る", admin_groups_path, data: {"turbolinks" => false} %>
-  <h1><%= @group.shop_name %>メンバー一覧</h1>
-  <div><%= link_to "メンバー追加", new_member_registration_path(group_id: @group.id) %></div>
-  <div><%= link_to "マニュアル追加", new_admin_manual_path(group_id: @group.id) %></div>
-  <div><%= link_to "マニュアル一覧", admin_manuals_path(group_id: @group.id) %></div>
-  <div><%= link_to "スキル追加", new_admin_skill_path(group_id: @group.id) %></div>
-  <div><%= link_to "スキル一覧", admin_skills_path(group_id: @group.id) %></div>
-  <div><%= link_to "お知らせ一覧", admin_group_messages_path(group_id: @group.id) %></div>
-  <div><%= link_to "シフト", admin_schedules_path(group_id: @group.id, month: Date.today.month) %></div>
+  <h1 class="heading"><%= @group.shop_name %>メンバー一覧</h1>
+  <%= link_to(new_member_registration_path(group_id: @group.id), class: "addMember") do %>
+    <span><i class="fas fa-plus"></i>メンバー追加</span>
+  <% end %>
+
 
 
 

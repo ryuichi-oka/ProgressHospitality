@@ -76,6 +76,11 @@
     border-radius: 35px;
     background-color: #ffde00;
     text-decoration: none;
+    transition: 0.3s;
+  }
+
+  &__admin:hover {
+    background-color: #fff;
   }
 
   &__member {
@@ -86,6 +91,12 @@
     border-radius: 35px;
     background-color: #1254a1;
     text-decoration: none;
+    transition: 0.3s;
+  }
+
+  &__member:hover {
+    background-color: #fff;
+    color: #1254a1;
   }
 }
 
@@ -103,7 +114,7 @@
 
   &__body {
     width: 100%;
-    padding: 0px 50px;
+    padding: 0px 50px 30px;
     margin: 0 auto;
     background-color: #a9ceec;
 
@@ -130,6 +141,21 @@
     font-size: 20px;
     color: #ec3f64;
   }
+}
+
+.heading {
+  text-align: center;
+  font-size: 35px;
+  padding-top: 30px;
+}
+
+.heading::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin: 5px auto 0 auto;
+  background-color: #EC715F;
 }
 
 .functionList {

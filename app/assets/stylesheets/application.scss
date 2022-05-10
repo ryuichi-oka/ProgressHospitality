@@ -47,7 +47,7 @@
 }
 
 .container {
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
 
   &__links {
     width: 100%;
@@ -56,7 +56,7 @@
   }
 
   &__logIn {
-    width: 50%;
+    width: 30%;
     margin: 150px auto;
   }
 
@@ -100,40 +100,48 @@
 
 .logIn {
   padding: 20px;
-  background-color: #ade0ee;
+  // background-color: #ade0ee;
+  border: 1px solid #ade0ee;
   border-radius: 5px;
+
 
   &__title {
     text-align: center;
   }
 
   &__field {
-    display: flex;
     justify-content: center;
 
     &--email {
-      width: 50%;
+      width: 100%;
       text-align: center;
       margin: 20px auto;
     }
 
     &--pass {
-      width: 50%;
+      width: 100%;
       text-align: center;
       margin: 20px auto;
     }
   }
 
   &__actions {
-    margin: 20px auto;
+    margin: 30px auto 20px;
     text-align: center;
 
     &--btn {
       font-weight: bold;
-      background-color: #c7c7c7;
-      padding: 7px 20px;
-      border: 2px solid #000;
-      border-radius: 5px;
+      color: #fff;
+      background-color: #1254a1;
+      padding: 7px 40px;
+      border: 2px solid #1254a1;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    &--btn:hover {
+      background-color: #fff;
+      color: #000;
     }
   }
 }
@@ -150,13 +158,13 @@ body {
 
   &__email {
     width: 85%;
-    height: 30px;
+    height: 35px;
     padding: 0 3px;
   }
 
   &__pass {
     width: 85%;
-    height: 30px;
+    height: 35px;
     padding: 0 3px;
   }
 }

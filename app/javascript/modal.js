@@ -1,8 +1,8 @@
 $(function(){
-  $('.js-modal-open').on('click', function(){
-    $('.js-modal').fadeIn();
+  $('.js-group-modal-open').on('click', function(){
+    $('.js-group-modal').fadeIn();
   });
-  $('.js-modal-close').on('click', function(){
-    $('.js-modal').fadeOut();
+  $('.js-group-modal-close').on('click', function(){
+    $('.js-group-modal').fadeOut();
   });
 });
