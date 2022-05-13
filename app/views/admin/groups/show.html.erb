@@ -7,13 +7,11 @@
 
 
 
-
   <div class="members">
     <% @members.each do |member| %>
     <div class="members__list memberList">
-      <div class="memberList__image"><%= image_tag member.get_image(200, 200) %></div>
-      <h4 class="memberList__name"><%= link_to (member.last_name + member.first_name), admin_member_path(member.id), data: {"turbolinks" => false} %></h4>
-      <%= link_to "編集", edit_admin_member_path(member.id), class: "memberList__edit" %>
+      <div class="memberList__image"><%= image_tag member.get_image(100, 100) %></div>
+      <h4><%= link_to (member.last_name + member.first_name), admin_member_path(member.id, group_id: @group.id), data: {"turbolinks" => false}, class: "memberList__name" %></h4>
     </div>
     <% end %>
   </div>

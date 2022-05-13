@@ -8,17 +8,20 @@ class Admin::MemberSkillsController < ApplicationController
     @member_skill = MemberSkill.new(member_skill_params)
     @member_skill.save
     @member = @member_skill.member
-    redirect_to admin_member_path(@member.id)
+    @group = @member.group
+    redirect_to admin_member_path(@member.id, group_id: @group.id)
   end
 
   def update
     @member_skill = MemberSkill.find(params[:id])
+    @group = @member_skill.member.group
     @member_skill.update(member_skill_params)
     @member = @member_skill.member
+    @group = @member.group
     if @member_skill.level == 100
       @member_skill.update(is_acquire: true)
     end
-    redirect_to admin_member_path(@member.id)
+    redirect_to admin_member_path(@member.id, group_id: @group.id)
   end
 
   def destroy
