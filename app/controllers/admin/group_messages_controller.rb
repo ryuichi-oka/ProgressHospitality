@@ -2,7 +2,7 @@ class Admin::GroupMessagesController < ApplicationController
 
   def new
     @group_message = GroupMessage.new
-    @group_id = params[:group_id]
+    @group = Group.find(params[:group_id])
   end
 
   def create
@@ -31,8 +31,9 @@ class Admin::GroupMessagesController < ApplicationController
 
   def update
     @group_message = GroupMessage.find(params[:id])
+    @group = @group_message.group
     @group_message.update(group_message_params)
-    redirect_to admin_group_message_path(@group_message.id)
+    redirect_to admin_group_message_path(@group_message.id, group_id: @group.id)
   end
 
   def destroy

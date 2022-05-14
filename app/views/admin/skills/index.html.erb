@@ -1,7 +1,16 @@
 <div class="container">
-  <%= link_to "店舗に戻る", admin_group_path(@group.id) %>
-  <h2><%= @group.shop_name + "スキル一覧" %></h2>
-  <div class="skillList container__element--center">
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i><%= @group.shop_name %>スキル一覧</h4>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to(new_admin_skill_path(group_id: @group.id), class: "addMember") do %>
+    <span><i class="fas fa-plus"></i>スキル追加</span>
+  <% end %>
+  <div class="skillList">
     <table class="skillList__table">
       <thead class="skillList__head">
         <tr>
@@ -17,7 +26,7 @@
         <% @skills.each do |skill| %>
         <tr class="skillList__item">
           <td class="skillList__text--center"><%= skill.work_type.work_type %></td>
-          <td class="skillList__text"><%= link_to skill.name, admin_skill_path(skill.id) %></td>
+          <td class="skillList__text"><%= link_to skill.name, admin_skill_path(skill.id, group_id: @group.id) %></td>
           <td class="skillList__text--center"><%= skill.rank_i18n %></td>
           <td class="skillList__text--center">
             <% if skill.is_active %>
@@ -32,5 +41,12 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+    </div>
   </div>
 </div>

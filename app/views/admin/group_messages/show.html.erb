@@ -2,10 +2,13 @@
   <div class="container__links">
     <div class="links">
       <h4 class="links__title"><i class="fas fa-caret-right"></i>お知らせ詳細</h4>
-      <%= link_to(admin_group_messages_path(group_id: @group.id), class: "links__item") do %>
-        <span><i class="fas fa-caret-left"></i>一覧に戻る</span>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
       <% end %>
-      <%= link_to(edit_admin_group_message_path(@group_message.id), class: "links__item") do %>
+      <%= link_to(admin_group_messages_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-newspaper"></i>一覧に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_group_message_path(@group_message.id, group_id: @group.id), class: "links__item") do %>
         <span><i class="fas fa-edit"></i>編集</span>
       <% end %>
       <%= link_to(admin_group_message_path(@group_message.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "links__item") do %>
@@ -75,8 +78,11 @@
   </div>
   <div class="container__links">
     <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
       <%= link_to(admin_group_messages_path(group_id: @group.id), class: "links__item") do %>
-        <span><i class="fas fa-caret-left"></i>一覧に戻る</span>
+        <span><i class="fas fa-newspaper"></i>一覧に戻る</span>
       <% end %>
       <%= link_to(edit_admin_group_message_path(@group_message.id), class: "links__item") do %>
         <span><i class="fas fa-edit"></i>編集</span>

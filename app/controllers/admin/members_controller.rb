@@ -12,12 +12,14 @@ class Admin::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
+    @group = @member.group
   end
 
   def update
     @member = Member.find(params[:id])
     @member.update(member_params)
-    redirect_to admin_member_path(@member.id)
+    @group = @member.group
+    redirect_to admin_member_path(@member.id, group_id: @group.id)
   end
 
   private

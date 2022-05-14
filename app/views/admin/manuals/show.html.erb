@@ -1,11 +1,20 @@
 <div class="container">
-  <h2>マニュアル詳細</h2>
-    <%= link_to "⇐マニュアル一覧", admin_manuals_path(group_id: @group.id) %>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>マニュアル詳細 <i class="fas fa-angle-double-right"></i> <%= @manual.name %></h4>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_manuals_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-book"></i>一覧に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_manual_path(@manual.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
+    </div>
+  </div>
   <div class="manual">
     <div class="manual__form field">
-      <div class="manual__edit">
-        <%= link_to "編集", edit_admin_manual_path(@manual.id) %>
-      </div>
       <div class="manual__item">
         <h4 class="field__title">マニュアル名称</h4>
         <p class="field__text"><%= @manual.name %></p>
@@ -48,6 +57,19 @@
         <h4 class="field__title">最終更新日時</h4>
         <p class="field__text"><%= l @manual.updated_at, format: :long %></p>
       </div>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_manuals_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-book"></i>一覧に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_manual_path(@manual.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
     </div>
   </div>
 </div>

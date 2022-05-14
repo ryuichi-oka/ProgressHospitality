@@ -2,7 +2,7 @@ class Admin::ManualsController < ApplicationController
 
   def new
     @manual = Manual.new
-    @group_id = params[:group_id]
+    @group = Group.find(params[:group_id])
   end
 
   def create
@@ -25,12 +25,14 @@ class Admin::ManualsController < ApplicationController
 
   def edit
     @manual = Manual.find(params[:id])
+    @group = @manual.group
   end
 
   def update
     @manual = Manual.find(params[:id])
+    @group = @manual.group
     @manual.update(manual_params)
-    redirect_to admin_manual_path(@manual)
+    redirect_to admin_manual_path(@manual.id, group_id: @group.id)
   end
 
   private

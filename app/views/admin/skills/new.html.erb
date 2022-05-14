@@ -1,6 +1,16 @@
 <div class="container">
-  <%= link_to "店舗に戻る", admin_group_path(@group_id) %>
-  <h2>スキル新規登録</h2>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i><%= @group.shop_name %>スキル新規登録</h4>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_skills_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-times"></i>一覧に戻る</span>
+      <% end %>
+    </div>
+  </div>
+
   <div class="skill">
     <div class="skill__form field">
       <%= form_with model: @skill, url: admin_skills_path, local: true do |f| %>
@@ -39,6 +49,16 @@
       <div class="firld__submit">
         <%= f.submit "登録", class: "manual__form--btn" %>
       </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_skills_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-times"></i>一覧に戻る</span>
       <% end %>
     </div>
   </div>

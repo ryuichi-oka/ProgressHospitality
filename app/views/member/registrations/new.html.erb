@@ -1,5 +1,13 @@
 <div class="container">
-  <h2>メンバー新規登録</h2>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>メンバー新規登録</h4>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+    </div>
+  </div>
+
 
   <%= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member' do |f| %>
     <%= render "member/shared/error_messages", resource: resource %>
@@ -7,7 +15,19 @@
     <div class="container__member member">
       <div class="member__form">
         <div class="member__form--left">
-          <%= f.file_field :image %>
+          <div class="file-field">
+            <%= f.label :image do %>
+              <% if @member.image.present? %>
+                <%= image_tag(@member.get_image(200, 200), class: "avatar") %>
+              <% else %>
+              <div class="file-field__icon">
+                <i class="fas fa-images" style="font-size: 80px;"></i>
+                <p class="file-field__icon--txt">画像をアップロードしてください</p>
+              </div>
+              <% end %>
+              <%= f.file_field :image, class: "uploader", style: "display:none;" %>
+            <% end %>
+          </div>
         </div>
         <div class="member__form--right field">
           <div class="field__group">
@@ -53,9 +73,8 @@
           <% end %>
         </div>
       </div>
-
     </div>
 </div>
 
-
+<%= javascript_pack_tag 'image' %>
 

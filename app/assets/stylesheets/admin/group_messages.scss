@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .group-message {
+  margin: 10px;
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 1px 2px 2px #c7c7c7;
+
 
   &__form {
     width: 90%;
@@ -55,7 +61,13 @@
 }
 
 .messageList {
-  width: 90%;
+  margin: 20px 10px;
+  padding: 10px;
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px #c7c7c7;
+  min-height: 400px;
+  background-color: #fff;
 
   table, th, td {
     border: none;
@@ -100,6 +112,13 @@
 }
 
 .message {
+  margin: 20px 10px;
+  padding: 10px;
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px #c7c7c7;
+  min-height: 400px;
+  background-color: #fff;
 
   &__head {
     width: 100%;
@@ -109,9 +128,10 @@
 
   &__info {
     background-color: #fff;
-    border: 1px solid #c3c3c3;
+    border: 1px solid #3e3e3e;
     border-radius: 2px;
     padding: 20px 10px;
+    margin-left: 10px;
 
     tr {
       line-height: 35px;
@@ -138,9 +158,10 @@
 
   &__comments {
     background-color: #fff;
-    border: 1px solid #c3c3c3;
+    border: 1px solid #3e3e3e;
     border-radius: 2px;
     padding: 5px 10px;
+    margin-left: 10px;
   }
 
   &__main {
@@ -151,9 +172,10 @@
 
   &__body {
     background-color: #fff;
-    border: 1px solid #c3c3c3;
+    border: 1px solid #3e3e3e;
     border-radius: 2px;
     padding: 5px 10px;
     min-height: 200px;
+    margin-left: 10px;
   }
 }

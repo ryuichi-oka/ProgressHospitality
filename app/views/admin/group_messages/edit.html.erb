@@ -1,7 +1,17 @@
 <div class="container">
-  <h2>お知らせ内容編集</h2>
   <div class="container__links">
-    <button><%= link_to "戻る", admin_group_messages_path(group_id: @group_id) %></button>
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>お知らせ編集 <i class="fas fa-angle-double-right"></i> <%= @group_message.title %></h4>
+      <%= link_to(admin_group_message_path(@group_message.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-times"></i>詳細に戻る</span>
+      <% end %>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_group_messages_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-newspaper"></i>一覧に戻る</span>
+      <% end %>
+    </div>
   </div>
   <div class="group-message">
     <div class="group-message__form field">
@@ -23,6 +33,19 @@
         <%= f.submit "更新", class: "group-message__form--btn" %>
       </div>
     <% end %>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_message_path(@group_message.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-times"></i>詳細に戻る</span>
+      <% end %>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_group_messages_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-newspaper"></i>一覧に戻る</span>
+      <% end %>
     </div>
   </div>
 </div>

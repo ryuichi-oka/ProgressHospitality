@@ -1,8 +1,18 @@
 <div class="container">
-  <%= link_to "⇐店舗一覧に戻る", admin_groups_path %>
-  <h2>スキル詳細</h2>
-  <%= link_to "⇐スキル一覧", admin_skills_path(group_id: @group.id) %>
-  <%= link_to "編集", edit_admin_skill_path(@skill.id) %>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i>スキル詳細 <i class="fas fa-angle-double-right"></i> <%= @skill.name %></h4>
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_skills_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-chart-line"></i>一覧に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_skill_path(@skill.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
+    </div>
+  </div>
   <div class="skillContent">
     <div class="skillContent__heading">
       <table>
@@ -89,6 +99,19 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(admin_skills_path(group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-chart-line"></i>一覧に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_skill_path(@skill.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
     </div>
   </div>
 </div>

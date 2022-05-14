@@ -2,7 +2,7 @@ class Admin::SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
-    @group_id = params[:group_id]
+    @group = Group.find(params[:group_id])
   end
 
   def create
@@ -28,12 +28,14 @@ class Admin::SkillsController < ApplicationController
 
   def edit
     @skill = Skill.find(params[:id])
+    @group = @skill.group
   end
 
   def update
     @skill = Skill.find(params[:id])
+    @group = @skill.group
     @skill.update(skill_params)
-    redirect_to admin_skill_path(@skill)
+    redirect_to admin_skill_path(@skill.id, group_id: @group.id)
   end
 
   private

@@ -5,7 +5,7 @@
       <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
         <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
       <% end %>
-      <%= link_to(edit_admin_member_path(@member.id), class: "links__item") do %>
+      <%= link_to(edit_admin_member_path(@member.id, group_id: @group.id), class: "links__item") do %>
         <span><i class="fas fa-edit"></i>編集</span>
       <% end %>
     </div>
@@ -17,22 +17,43 @@
       <div class="memberInfo">
         <div class="memberInfo__img"><%= image_tag @member.get_image(200, 200) %></div>
         <div class="memberInfo__data">
-          <%= @member.last_name + @member.first_name %><br>
-          <%= @member.birthday.strftime("%Y年%m月%d日") %><br>
-          <%= "〒" +@member.postal_code %><br>
-          <%= @member.address %><br>
-          <%= @member.telephone_number %><br>
-          <%= @member.email %><br>
-          <% if @member.is_active %>
-            <p>在籍</p>
-          <% else %>
-            <p>退社</p>
-          <% end %>
+          <table>
+            <tr>
+              <th>氏名</th>
+              <td><%= @member.last_name + @member.first_name %></td>
+            </tr>
+            <tr>
+              <th>生年月日</th>
+              <td><%= @member.birthday.strftime("%Y年%m月%d日") %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= "〒" +@member.postal_code %><br><%= @member.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @member.telephone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @member.email %></td>
+            </tr>
+            <tr>
+              <th>在籍ステータス</th>
+              <td>
+              <% if @member.is_active %>
+                <p>在籍</p>
+              <% else %>
+                <p>退社</p>
+              <% end %>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div class="memberObjec">
-        <h3>今月の目標</h3>
-        <%= @member.objective %>
+        <h3 class="memberObjec__title">＜今月の目標＞</h3>
+        <p class="memberObjec__text"><%= @member.objective %></p>
       </div>
     </div>
     <div class="memberData__item">
@@ -100,7 +121,7 @@
                     <div class="challenge__range--data">
                       <span id="current_level"><%= challenge.level %></span>％
                     </div>
-                    <%= f.range_field :level, :min=>0, :max=>100, id: "member_skill_level", class: "challenge__range--form" %>
+                    <%= f.range_field :level, :min=>0, :max=>100, :step=>10, id: "member_skill_level", class: "challenge__range--form" %>
                     <%= f.button :type => "submit", class: "challenge__range--btn" do %>
                       <i class="fas fa-redo"></i>
                     <% end %>
@@ -118,20 +139,28 @@
             <% end %>
           </tbody>
         </table>
-
         <div class="challenge__form">
+          <h4 class="addChallenge">チャレンジスキル追加</h4>
           <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
             <%= f.hidden_field :member_id, value: @member.id %>
             <%= f.hidden_field :is_acquire, value: false %>
-            <div class="challenge__form--select">
-              <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
-            </div>
-            <div class="challenge__form--submit">
-              <%= f.submit "登録" %>
-            </div>
+            <%= f.collection_select :skill_id, Skill.order(:name), :id, :skill_data, {}, {class: "challenge__form--select"} %>
+            <%= f.button :type => "submit", class: "challenge__form--submit" do %>
+              <i class="fas fa-plus-square"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>店舗に戻る</span>
+      <% end %>
+      <%= link_to(edit_admin_member_path(@member.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
     </div>
   </div>
 </div>

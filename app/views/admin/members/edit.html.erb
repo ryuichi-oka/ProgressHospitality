@@ -1,12 +1,28 @@
 <div class="container">
-  <h2><%= @member.last_name + @member.first_name %>さん登録情報編集</h2>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i><%= @member.last_name + @member.first_name %>さん登録情報編集</h4>
+      <%= link_to(admin_member_path(@member.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>詳細に戻る</span>
+      <% end %>
+    </div>
+  </div>
 
   <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch, local: true do |f| %>
 
-    <div class="container__member member">
-      <div class="member__form">
-        <div class="member__form--left field">
-          <%= f.file_field :image %><br>
+    <div class="member">
+      <div class="member__form field">
+        <div class="member__form--left">
+          <div class="file-field">
+            <%= f.label :image do %>
+              <% if @member.image.present? %>
+                <%= image_tag(@member.get_image(200, 200), class: "avatar") %>
+              <% else %>
+                <i class="fas fa-portrait"></i>
+              <% end %>
+              <%= f.file_field :image, class: "uploader", style: "display:none;" %>
+            <% end %>
+          </div>
           <div class="field__objective">
             <h5 class="member__form--title">今月の目標</h5>
             <%= f.text_area :objective, placeholder: "目標を入力", class: "member__form--objective" %>
@@ -52,11 +68,21 @@
             <%= f.label :is_active, "退社", {value: :false, style: "display: inline-clock;" } %>
           </div>
           <div class="field__submit">
-            <%= f.submit "更新", class: "member__form--btn" %>
+            <%= f.button :type => "submit", class: "member__form--btn" do %>
+              <p><i class="fas fa-redo"></i> 更新</p>
+            <% end %>
           </div>
           <% end %>
         </div>
       </div>
     </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(admin_member_path(@member.id, group_id: @group.id), class: "links__item") do %>
+        <span><i class="fas fa-caret-left"></i>詳細に戻る</span>
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<%= javascript_pack_tag 'image' %>
