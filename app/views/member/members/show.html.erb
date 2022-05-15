@@ -1,87 +1,181 @@
 <div class="container">
-  <h2 class="container__title"><%= current_member.last_name + current_member.first_name %>さん</h2>
-  <%= link_to "登録情報編集", edit_member_member_path(@member.id) %>
-  <%= link_to "マニュアル一覧", member_manuals_path %>
-  <%= link_to "スキル一覧", member_skills_path %>
-  <%= link_to "お知らせ一覧", member_group_messages_path %>
-
-
-  <div class="container__item member">
-    <div class="member__data">
-      <div class="member__data--left">
-        <div class="member__image"><%= image_tag @member.get_image(200, 200) %></div>
-        <div class="member__info">
-          <%= current_member.last_name + current_member.first_name %><br>
-          <%= current_member.birthday.strftime("%Y年%m月%d日") %><br>
-          <%= "〒" + current_member.postal_code %><br>
-          <%= current_member.address %><br>
-          <%= current_member.telephone_number %><br>
-          <%= current_member.email %><br>
+  <div class="container__links">
+    <div class="links">
+      <h4 class="links__title"><i class="fas fa-caret-right"></i><%= @member.last_name + @member.first_name %>さんマイページ</h4>
+      <%= link_to(edit_member_member_path(@member.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
+      <%= link_to(member_manuals_path, class: "links__item") do %>
+        <span><i class="fas fa-book"></i>マニュアル</span>
+      <% end %>
+      <%= link_to(member_skills_path, class: "links__item") do %>
+        <span><i class="fas fa-chart-line"></i>スキル</span>
+      <% end %>
+      <%= link_to(member_group_messages_path, class: "links__item") do %>
+        <span><i class="fas fa-newspaper"></i>お知らせ</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="memberData">
+    <div class="memberData__item">
+      <h3 class="memberData__heading">従業員情報</h3>
+      <div class="memberInfo">
+        <div class="memberInfo__img"><%= image_tag @member.get_image(200, 200) %></div>
+        <div class="memberInfo__data">
+          <table>
+            <tr>
+              <th>氏名</th>
+              <td><%= @member.last_name + @member.first_name %></td>
+            </tr>
+            <tr>
+              <th>生年月日</th>
+              <td><%= @member.birthday.strftime("%Y年%m月%d日") %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= "〒" +@member.postal_code %><br><%= @member.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @member.telephone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @member.email %></td>
+            </tr>
+            <tr>
+              <th>在籍ステータス</th>
+              <td>
+              <% if @member.is_active %>
+                <p>在籍</p>
+              <% else %>
+                <p>退社</p>
+              <% end %>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div class="member__data--right">
-        <div class="member__objective">
-          <h3 style="display: inline-block;">今月の目標</h3>
+      <div class="memberObjec">
+        <h3 class="memberObjec__title">
+          ＜今月の目標＞
           <% if current_member.objective.empty? %>
-            <button class="js-modal-open">登録</button>
-            <div class="modal js-modal">
-              <div class="modal__bg js-modal-close"></div>
-                <div class="modal__content">
-                  <h4>目標登録</h4>
-                  <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
-                    <div class="modal__form--txt"><%= f.text_field :objective, class: "modal__form--txt" %></div>
-                    <div><%= f.submit "登録", class: "modal__form--sub" %></div>
-                  <% end %>
+            <p class="js-objec-modal-open addObjec">登録</p>
+            <div class="objec-modal js-objec-modal">
+              <div class="objec-modal__bg js-objec-modal-close"></div>
+              <div class="objec-modal__content">
+                <h4>目標登録</h4>
+                <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
+                  <div class="objec-modal__form--txt"><%= f.text_field :objective, class: "objec-modal__form--txt" %></div>
+                  <div><%= f.submit "登録", class: "objec-modal__form--sub" %></div>
+                <% end %>
+                <div class="js-objec-modal-close" align="right">
+                  <p class="close-btn"><span><i class="fas fa-times"></i></span>閉じる</p>
                 </div>
+              </div>
             </div>
           <% else %>
-            <button class="js-modal-open">変更</button>
-            <div class="modal js-modal">
-              <div class="modal__bg js-modal-close"></div>
-                <div class="modal__content">
-                  <h4>目標変更</h4>
-                  <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
-                    <div class="modal__form--txt"><%= f.text_field :objective, class: "modal__form--txt" %></div>
-                    <div><%= f.submit "登録", class: "modal__form--sub" %></div>
-                  <% end %>
+            <p class="js-objec-modal-open addObjec">変更</p>
+            <div class="objec-modal js-objec-modal">
+              <div class="objec-modal__bg js-objec-modal-close"></div>
+              <div class="objec-modal__content">
+                <h4>目標変更</h4>
+                <%= form_with model: @member, url: member_member_path(current_member.id), method: :patch, local: true do |f| %>
+                  <div class="objec-modal__form--txt"><%= f.text_field :objective, class: "objec-modal__form--txt" %></div>
+                  <div><%= f.submit "登録", class: "objec-modal__form--sub" %></div>
+                <% end %>
+                <div class="js-objec-modal-close" align="right">
+                  <p class="close-btn"><span><i class="fas fa-times"></i></span>閉じる</p>
                 </div>
+              </div>
             </div>
           <% end %>
-          <div><%= current_member.objective %></div>
-        </div>
-        <div class="member__skill skills">
-          <div class="skills__acquired acquired">
-            <h3>習得スキル</h3>
+        </h3>
+        <p class="memberObjec__text"><%= current_member.objective %></p>
+      </div>
+    </div>
+    <div class="memberData__item">
+      <h3 class="memberData__heading">能力見える化</h3>
+    </div>
+    <div class="memberData__item">
+      <h3 class="memberData__heading">習得スキル</h3>
+      <div class="acquired">
+        <table class="acquired__table">
+          <thead>
+            <tr>
+              <th width="50%">スキル名</th>
+              <th width="20%">ランク</th>
+              <th width="20%">習得日</th>
+            </tr>
+          </thead>
+          <tbody>
             <% @acquired.each do |acquire| %>
-            <div class="acquired__list">
-              <p class="acquired__item"><%= acquire.skill.name %></p>
-            </div>
+            <tr class="acquired__item">
+              <td><%= link_to acquire.skill.name, admin_skill_path(acquire.skill.id), class: "acquired__name" %></td>
+              <td class="acquired__rank"><%= acquire.skill.rank_i18n %></td>
+              <td class="acquired__date"><%= l acquire.updated_at.to_date, format: :default %></td>
+              <td class="acquired__des">
+            </tr>
             <% end %>
-          </div>
-          <div class="skill__challenge challenge">
-           <h3>未習得（チャレンジ）リスト</h3>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="memberData__item">
+      <h3 class="memberData__heading">未習得（チャレンジ）リスト</h3>
+      <div class="challenge">
+        <table class="challenge__table">
+          <thead>
+            <tr>
+              <th width="50%">スキル名</th>
+              <th width="20%">ランク</th>
+              <th width="20%">開始日</th>
+              <th width="10%"></th>
+            </tr>
+          </thead>
+          <tbody>
             <% @challenges.each do |challenge| %>
-            <div class="challenge__list">
-              <p class="challenge__item"><%= link_to challenge.skill.name, member_skill_path(challenge.skill.id) %></p>
-                <span id="current_level">達成度<%= challenge.level %></span>％
-              <button class="challenge__destroy"><%= link_to "削除", member_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-            </div>
+            <tr class="challenge__item">
+              <td><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id), class: "challenge__name" %></td>
+              <td class="challenge__rank"><%= challenge.skill.rank_i18n %></td>
+              <td class="challenge__date"><%= l challenge.created_at.to_date, format: :default %></td>
+              <td class="challenge__des">
+                <%= link_to(admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "challenge__des--btn") do %>
+                  <span><i class="fas fa-minus-square"></i></span>
+                <% end %>
+              </td>
+            </tr>
             <% end %>
-            <div class="challenge__form">
-              <%= form_with model: @member_skill, url: member_member_skills_path, local: true do |f| %>
-                <%= f.hidden_field :member_id, value: @member.id %>
-                <%= f.hidden_field :is_acquire, value: false %>
-                <div class="challenge__form--select">
-                  <%= f.collection_select :skill_id, Skill.order(:name), :id, :name %>
-                </div>
-                <div class="challenge__form--submit">
-                  <%= f.submit "登録" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
+          </tbody>
+        </table>
+        <div class="challenge__form">
+          <h4 class="addChallenge">チャレンジスキル追加</h4>
+          <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+            <%= f.hidden_field :member_id, value: @member.id %>
+            <%= f.hidden_field :is_acquire, value: false %>
+            <%= f.collection_select :skill_id, Skill.order(:name), :id, :skill_data, {}, {class: "challenge__form--select"} %>
+            <%= f.button :type => "submit", class: "challenge__form--submit" do %>
+              <i class="fas fa-plus-square"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container__links">
+    <div class="links">
+      <%= link_to(edit_member_member_path(@member.id), class: "links__item") do %>
+        <span><i class="fas fa-edit"></i>編集</span>
+      <% end %>
+      <%= link_to(member_manuals_path, class: "links__item") do %>
+        <span><i class="fas fa-book"></i>マニュアル</span>
+      <% end %>
+      <%= link_to(member_skills_path, class: "links__item") do %>
+        <span><i class="fas fa-chart-line"></i>スキル</span>
+      <% end %>
+      <%= link_to(member_group_messages_path, class: "links__item") do %>
+        <span><i class="fas fa-newspaper"></i>お知らせ</span>
+      <% end %>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
         <span><i class="fas fa-home"></i>マイページ</span>
       <% end %>
       <%= link_to(member_group_messages_path, class: "links__item") do %>
-        <span><i class="fas fa-caret-left"></i>一覧に戻る</span>
+        <span><i class="fas fa-newspaper"></i>一覧に戻る</span>
       <% end %>
     </div>
   </div>
@@ -40,7 +40,7 @@
                   <%= file.filename %>
                 <% end %>
               <% else %>
-                <%= "" %>
+                <p>添付ファイル無し</p>
               <% end %>
             </td>
           </tr>
@@ -65,8 +65,10 @@
           <div class="commentList__comment"><%= simple_format(comment.comment) %></div>
           <div class="commentList__info">
             <%= comment.member.last_name + comment.member.first_name %><br>
-            <%= l comment.created_at, format: :short %>
-            <%= link_to "削除", member_group_message_comment_path(@group_message.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            <%= l comment.created_at, format: :short %><br>
+            <%= link_to(member_group_message_comment_path(@group_message.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？") do %>
+              <p class="commentList__delete"><i class="fas fa-trash-alt"></i> 削除</p>
+            <% end %>
           </div>
         </div>
         <% end %>
@@ -76,10 +78,13 @@
         </div>
       <% end %>
       <%= form_with model: [@group_message, @comment], url: member_group_message_comments_path(@group_message.id), method: :post do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.submit "送信" %>
+        <%= f.text_area :comment, class: "commentList__form" %>
+        <%= f.button :type => "submit", class: "commentList__form--btn" do %>
+          <p><i class="fas fa-comment-dots"></i> コメント送信</p>
+        <% end %>
       <% end %>
     </div>
+  </div>
     <div class="message__main">
       <h4 class="message__title">お知らせ本文</h4>
       <div class="message__body">

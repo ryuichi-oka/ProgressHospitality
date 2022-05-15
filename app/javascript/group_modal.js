@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
   $('.js-group-modal-open').on('click', function(){
     $('.js-group-modal').fadeIn();
   });

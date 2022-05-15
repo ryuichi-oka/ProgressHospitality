@@ -14,6 +14,7 @@ class Member::MembersController < ApplicationController
 
   def edit
     @member = current_member
+    @group = @member.group
   end
 
   def update
