@@ -13,94 +13,129 @@
       <% end %>
     </div>
   </div>
-  <div class="skillContent">
-    <div class="skillContent__heading">
-      <table>
-        <thead>
-          <tr>
-            <th width="10%">業務種別</th>
-            <th width="30%">スキル名称</th>
-            <th width="10%">ランク</th>
-            <th width="10%">公開／非公開</th>
-            <th width="20%">登録日時</th>
-            <th width="20%">最終更新日時</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @skill.work_type.work_type %></td>
-            <td><%= @skill.name %></td>
-            <td><%= @skill.rank_i18n %></td>
-            <td>
-              <% if @skill.is_active %>
-                <p>公開</p>
-              <% else %>
-                <p>非公開</p>
-              <% end %>
-            </td>
-            <td><%= l @skill.created_at, format: :long %></td>
-            <td><%= l @skill.updated_at, format: :long %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="skillContent__main">
-      <div class="skillContent__main--left field">
-        <div class="skillContent__body">
-          <h4 class="field__title">スキル概要</h4>
-          <p class="field__text"><%= @skill.body %></p>
-        </div>
-        <div class="skillContent__terms">
-          <h4 class="field__title">習得条件</h4>
-          <p class="field__text"><%= @skill.terms %></p>
+  <div class="skillData">
+    <div class="skillData__item">
+      <h3 class="skillData__heading">スキル情報</h3>
+      <div class="skillInfo">
+        <div class="skillInfo__data">
+          <table>
+            <tr>
+              <th>スキル名</th>
+              <td><%= @skill.name %></td>
+            </tr>
+            <tr>
+              <th>業務種別</th>
+              <td><%= @skill.work_type.work_type %></td>
+            </tr>
+            <tr>
+              <th>ランク</th>
+              <td><%= @skill.rank_i18n %></td>
+            </tr>
+            <tr>
+              <th>登録日</th>
+              <td><%= l @skill.created_at, format: :long %></td>
+            </tr>
+            <tr>
+              <th>最終更新日</th>
+              <td><%= l @skill.updated_at, format: :long %></td>
+            </tr>
+            <tr>
+              <th>公開ステータス</th>
+              <td>
+                <% if @skill.is_active %>
+                  <%= "公開" %>
+                <% else %>
+                  <%= "非公開" %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div class="skillContent__main--right">
-        <div class="skillDetails">
-          <h4 class="field__title">必要技術</h4>
-          <% @skill_details.each do |skill_detail| %>
-          <div class="skillDetails__list">
-            <p class="skillDetails__item"><%= skill_detail.body %></p>
-            <button class="skillDetails__edit">編集</button>
-            <button class="skillDetails__destroy"><%= link_to "削除", admin_skill_detail_path(skill_detail.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-          </div>
-          <% end %>
-          <div class="skillDetails__form">
-            <%= form_with model: @skill_detail, url: admin_skill_details_path, local: true do |f| %>
-              <%= f.hidden_field :skill_id, value: @skill.id %>
-              <div class="skillDetails__form--body">
-                <%= f.text_field :body %>
-              </div>
-              <div class="skillDetails__form--submit">
-                <%= f.submit "登録" %>
-              </div>
+    </div>
+    <div class="skillData__item">
+      <div class="skillData__item--1">
+        <h3 class="skillData__heading">スキル概要</h3>
+        <div class="skillData__text"><%= simple_format(@skill.body) %></div>
+      </div>
+      <div class="skillData__item--2">
+        <h3 class="skillData__heading">習得条件</h3>
+        <p class="skillData__text"><%= @skill.terms %></p>
+      </div>
+    </div>
+    <div class="skillData__item">
+      <h3 class="skillData__heading">必要技術</h3>
+      <div class="skillDetails">
+        <table class="skillDetails__table">
+          <thead>
+            <tr>
+              <th width="80%"></th>
+              <th width="10%"></th>
+              <th width="10%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @skill_details.each do |skill_detail| %>
+            <tr class="skillDetails__item">
+              <td class="skillDetails__body"><%= skill_detail.body %></td>
+              <td class="skillDetails__edit"><span class="skillDetails__edit--btn">編集</span></td>
+              <td class="skillDetails__des">
+                <%= link_to(admin_skill_detail_path(skill_detail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "acquired__des--btn") do %>
+                  <span><i class="fas fa-minus-square"></i></span>
+                <% end %>
+              </td>
+            </tr>
             <% end %>
-          </div>
-        </div>
-        <div class="skillManuals">
-          <h4 class="field__title">関連マニュアル</h4>
-          <% @skill_manuals.each do |skill_manual| %>
-          <div class="skillManual__list">
-            <p class="skillManual__item"><%= link_to skill_manual.manual.name, admin_manual_path(skill_manual.manual.id) %></p>
-            <button class="skillManual__destroy"><%= link_to "削除", admin_skill_manual_path(skill_manual.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-          </div>
-          <% end %>
-          <div class="skillManuals__form">
-            <%= form_with model: @skill_manual, url: admin_skill_manuals_path, local: true do |f| %>
+          </tbody>
+        </table>
+        <div class="skillDetails__form">
+          <%= form_with model: @skill_detail, url: admin_skill_details_path, local: true do |f| %>
             <%= f.hidden_field :skill_id, value: @skill.id %>
-            <div class="skillManuals__form--select">
-              <%= f.collection_select :manual_id, Manual.order(:name), :id, :name %>
-            </div>
-            <div class="skillManuals__form--submit">
-              <%= f.submit "登録" %>
-            </div>
+            <%= f.text_field :body, class: "skillDetails__form--body" %>
+            <%= f.button :type => "submit", class: "skillDetails__form--submit" do %>
+              <i class="fas fa-plus-square"></i>
             <% end %>
-          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="skillData__item">
+      <h3 class="skillData__heading">関連マニュアル</h3>
+      <div class="skillManuals">
+        <table class="skillManuals__table">
+          <thead>
+            <tr>
+              <th width="90%"></th>
+              <th width="10%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @skill_manuals.each do |skill_manual| %>
+            <tr class="skillManuals__item">
+              <td><%= link_to skill_manual.manual.name, admin_manual_path(skill_manual.manual.id), class: "skillManuals__name" %></td>
+              <td class="challenge__des">
+                <%= link_to(admin_skill_manual_path(skill_manual.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "acquired__des--btn") do %>
+                  <span><i class="fas fa-minus-square"></i></span>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="skillManuals__form">
+          <%= form_with model: @skill_manual, url: admin_skill_manuals_path, local: true do |f| %>
+            <%= f.hidden_field :skill_id, value: @skill.id %>
+            <%= f.collection_select :manual_id, Manual.order(:name), :id, :name, {}, {class: "skillManuals__form--select"} %>
+            <%= f.button :type => "submit", class: "skillManuals__form--submit" do %>
+              <i class="fas fa-plus-square"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+
+
   <div class="container__links">
     <div class="links">
       <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "links__item") do %>

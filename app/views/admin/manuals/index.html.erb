@@ -14,9 +14,9 @@
     <table class="manualList__table">
       <thead class="manualList__head">
         <tr>
+          <th width="5%"></th>
           <th width="10%">業務種別</th>
-          <th width="30%">マニュアル名</th>
-          <th width="10%">添付ファイル</th>
+          <th width="35%">マニュアル名</th>
           <th width="10%">公開／非公開</th>
           <th width="20%">登録日時</th>
           <th width="20%">最終更新日時</th>
@@ -25,8 +25,6 @@
       <tbody class="manualList__body">
       <% @manuals.each do |manual| %>
         <tr class="manualList__item">
-          <td class="manualList__text--center"><%= manual.work_type.work_type %></td>
-          <td class="manualList__text"><%= link_to manual.name, admin_manual_path(manual.id, group_id: @group.id) %></td>
           <td class="manualList__text--center">
             <% if manual.files.attached? %>
               <i class="fas fa-paperclip" style="color: red;"></i>
@@ -34,6 +32,8 @@
               <p></p>
             <% end %>
           </td>
+          <td class="manualList__text--center"><%= manual.work_type.work_type %></td>
+          <td class="manualList__text"><%= link_to manual.name, admin_manual_path(manual.id, group_id: @group.id) %></td>
           <td class="manualList__text--center">
             <% if manual.is_active %>
               <p>公開</p>

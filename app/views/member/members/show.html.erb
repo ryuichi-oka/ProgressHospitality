@@ -111,7 +111,7 @@
           <tbody>
             <% @acquired.each do |acquire| %>
             <tr class="acquired__item">
-              <td><%= link_to acquire.skill.name, admin_skill_path(acquire.skill.id), class: "acquired__name" %></td>
+              <td><%= link_to acquire.skill.name, member_skill_path(acquire.skill.id), class: "acquired__name" %></td>
               <td class="acquired__rank"><%= acquire.skill.rank_i18n %></td>
               <td class="acquired__date"><%= l acquire.updated_at.to_date, format: :default %></td>
               <td class="acquired__des">
@@ -136,11 +136,11 @@
           <tbody>
             <% @challenges.each do |challenge| %>
             <tr class="challenge__item">
-              <td><%= link_to challenge.skill.name, admin_skill_path(challenge.skill.id), class: "challenge__name" %></td>
+              <td><%= link_to challenge.skill.name, member_skill_path(challenge.skill.id), class: "challenge__name" %></td>
               <td class="challenge__rank"><%= challenge.skill.rank_i18n %></td>
               <td class="challenge__date"><%= l challenge.created_at.to_date, format: :default %></td>
               <td class="challenge__des">
-                <%= link_to(admin_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "challenge__des--btn") do %>
+                <%= link_to(member_member_skill_path(challenge.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "challenge__des--btn") do %>
                   <span><i class="fas fa-minus-square"></i></span>
                 <% end %>
               </td>
@@ -150,7 +150,7 @@
         </table>
         <div class="challenge__form">
           <h4 class="addChallenge">チャレンジスキル追加</h4>
-          <%= form_with model: @member_skill, url: admin_member_skills_path, local: true do |f| %>
+          <%= form_with model: @member_skill, url: member_member_skills_path, local: true do |f| %>
             <%= f.hidden_field :member_id, value: @member.id %>
             <%= f.hidden_field :is_acquire, value: false %>
             <%= f.collection_select :skill_id, Skill.order(:name), :id, :skill_data, {}, {class: "challenge__form--select"} %>
@@ -162,7 +162,7 @@
       </div>
     </div>
   </div>
-  <div class="container__links">
+  <div class="container__links--btm">
     <div class="links">
       <%= link_to(edit_member_member_path(@member.id), class: "links__item") do %>
         <span><i class="fas fa-edit"></i>編集</span>

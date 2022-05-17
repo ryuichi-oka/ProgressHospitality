@@ -14,7 +14,7 @@
     <div class="manual__form field">
       <%= form_with model: @manual, url: admin_manuals_path, local: true do |f| %>
       <div class="field__group">
-        <%= f.hidden_field :group_id, value: @group_id %>
+        <%= f.hidden_field :group_id, value: @group.id %>
       </div>
       <div class="field__work-type">
         <h4 class="field__title">業務種別</h4>

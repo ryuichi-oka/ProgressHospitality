@@ -26,7 +26,7 @@ ja:
 
   time:
     formats:
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%Y/%m/%d"
       short: "%Y/%m/%d(%a) %H:%M"
       long: "%Y/%m/%d(%a) %H:%M:%S"
     am: "午前"

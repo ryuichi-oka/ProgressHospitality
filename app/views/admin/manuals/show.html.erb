@@ -14,48 +14,55 @@
     </div>
   </div>
   <div class="manual">
-    <div class="manual__form field">
-      <div class="manual__item">
-        <h4 class="field__title">マニュアル名称</h4>
-        <p class="field__text"><%= @manual.name %></p>
+    <div class="manual__head">
+      <h4 class="manual__title">マニュアル詳細</h4>
+      <div class="manual__info">
+        <table>
+          <tr>
+            <th>マニュアル名</th>
+            <td><%= @manual.name %></td>
+          </tr>
+          <tr>
+            <th>業務種別</th>
+            <td><%= @manual.work_type.work_type %></td>
+          </tr>
+          <tr>
+            <th>登録日</th>
+            <td><%= l @manual.created_at, format: :long %></td>
+          </tr>
+          <tr>
+            <th>最終更新日</th>
+            <td><%= l @manual.updated_at, format: :long %></td>
+          </tr>
+          <tr>
+            <th>添付ファイル</th>
+            <td>
+              <% if @manual.files.attached? %>
+                <% @files.each do |file| %>
+                  <%= file.filename %>
+                <% end %>
+              <% else %>
+                <%= "添付ファイル無し" %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>公開ステータス</th>
+            <td>
+              <% if @manual.is_active %>
+                <%= "公開" %>
+              <% else %>
+                <%= "非公開" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
-      <div class="manual__item">
-        <h4 class="field__title">業務種別</h4>
-        <p class="field__text"><%= @manual.work_type.work_type %></p>
-      </div>
-      <div class="manual__item">
-        <h4 class="field__title">マニュアル概要</h4>
-        <p><%= simple_format(@manual.body, class: "field__text") %></p>
-      </div>
-      <div class="manual__item">
-        <h4 class="field__title">添付ファイル</h4>
-        <p class="field__text">
-          <% if @manual.files.attached? %>
-            <% @files.each do |file| %>
-              <%= file.filename %>
-            <% end %>
-          <% else %>
-            <%= "添付ファイル無し" %>
-          <% end %>
-        </p>
-      </div>
-      <div class="manual__item">
-        <h4 class="field__title">公開ステータス</h4>
-        <p class="field__text">
-          <% if @manual.is_active %>
-            <%= "公開" %>
-          <% else %>
-            <%= "非公開" %>
-          <% end %>
-        </p>
-      </div>
-      <div class="manual__item">
-        <h4 class="field__title">登録日時</h4>
-        <p class="field__text"><%= l @manual.created_at, format: :long %></p>
-      </div>
-      <div class="manual__item">
-        <h4 class="field__title">最終更新日時</h4>
-        <p class="field__text"><%= l @manual.updated_at, format: :long %></p>
+    </div>
+    <div class="manual__main">
+      <h4 class="manual__title">お知らせ本文</h4>
+      <div class="manual__body">
+        <%= simple_format(@manual.body) %>
       </div>
     </div>
   </div>

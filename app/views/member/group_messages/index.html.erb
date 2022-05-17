@@ -42,14 +42,14 @@
               <%= link_to(message.title, member_group_message_path(message.id), class: "messageList__link--red") %>
             <% end %>
           </td>
-          <td><%= l message.created_at, format: :long %></td>
-          <td><%= l message.updated_at, format: :long %></td>
+          <td class="messageList__date"><span class="messageList__date--1"><%= l message.created_at, format: :long %></span><span class="messageList__date--2"><%= l message.created_at, format: :default %></span></td>
+          <td class="messageList__date"><span class="messageList__date--1"><%= l message.updated_at, format: :long %></span><span class="messageList__date--2"><%= l message.updated_at, format: :default %></span></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
-  <div class="container__links">
+  <div class="container__links--btm">
     <div class="links">
       <%= link_to(member_member_path(current_member.id), class: "links__item") do %>
         <span><i class="fas fa-home"></i>マイページ</span>

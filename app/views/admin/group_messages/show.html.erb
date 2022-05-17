@@ -59,6 +59,9 @@
           <div class="commentList__info">
             <%= comment.member.last_name + comment.member.first_name %><br>
             <%= l comment.created_at, format: :short %>
+            <%= link_to(admin_group_message_comment_path(@group_message.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？") do %>
+              <p class="commentList__delete"><i class="fas fa-trash-alt"></i> 削除</p>
+            <% end %>
           </div>
         </div>
         <% end %>

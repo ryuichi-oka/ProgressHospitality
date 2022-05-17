@@ -1,3 +1,31 @@
 // Place all the styles related to the member/skills controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@media screen and (max-width: 599px) {
+  .skillList {
+    font-size: 13px;
+
+    &__text {
+      padding-left: 0;
+    }
+
+    &__date {
+      &--1 {
+        display: none;
+      }
+
+      &--2 {
+        display: block;
+      }
+    }
+  }
+
+  .skillData {
+    display: block;
+
+    &__item {
+      height: 350px;
+    }
+  }
+}
+

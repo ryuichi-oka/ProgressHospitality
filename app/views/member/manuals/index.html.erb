@@ -11,9 +11,9 @@
     <table class="manualList__table">
       <thead class="manualList__head">
         <tr>
-          <th width="10%">業務種別</th>
+          <th width="10%">種別</th>
           <th width="30%">マニュアル名</th>
-          <th width="10%">添付ファイル</th>
+          <th width="10%"></th>
           <th width="20%">登録日時</th>
           <th width="20%">最終更新日時</th>
         </tr>
@@ -30,14 +30,14 @@
               <p></p>
             <% end %>
           </td>
-          <td><%= l manual.created_at, format: :long %></td>
-          <td><%= l manual.updated_at, format: :long %></td>
+          <td class="manualList__date"><span class="manualList__date--1"><%= l manual.created_at, format: :long %></span><span class="manualList__date--2"><%= l manual.created_at, format: :default %></span></td>
+          <td class="manualList__date"><span class="manualList__date--1"><%= l manual.updated_at, format: :long %></span><span class="manualList__date--2"><%= l manual.updated_at, format: :default %></span></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
-  <div class="container__links">
+  <div class="container__links--btm">
     <div class="links">
       <%= link_to(member_member_path(current_member.id), class: "links__item") do %>
         <span><i class="fas fa-home"></i>マイページ</span>

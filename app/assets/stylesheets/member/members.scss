@@ -94,11 +94,53 @@
   background: #ff4d4d;
   color: #fff;
   text-align-last: justify;
-  transition: 0.3s;
 }
 
 .close-btn:hover {
-  background-color: #fff;
-  color: #ff4d4d;
   cursor: pointer;
+}
+
+@media screen and (max-width: 599px) {
+
+  .memberData {
+    display: block;
+
+    &__item {
+      min-height: 350px;
+    }
+  }
+
+  .memberInfo {
+    &__img {
+      width: 25vh;
+    }
+
+    &__data table tr th{
+      line-height: 1.5;
+    }
+  }
+
+  .objec-modal {
+
+    &__content {
+      width: 70%;
+    }
+  }
+
+  .member {
+
+    &__form {
+      display: block;
+
+      &--left {
+        margin: 10px auto;
+        width: 60%;
+      }
+
+      &--right {
+        margin: 10px auto;
+        width: 60%;
+      }
+    }
+  }
 }
