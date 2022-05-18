@@ -1,4 +1,5 @@
 class Member::SkillsController < ApplicationController
+  before_action :authenticate_member!
 
   def index
     @group = current_member.group

@@ -1,4 +1,5 @@
 class Admin::GroupsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
   end
@@ -11,8 +12,12 @@ class Admin::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.save
-    redirect_to admin_groups_path
+    if @group.save
+      redirect_to admin_groups_path
+    else
+      flash[:error] = "店舗名を入力してください。"
+      redirect_to admin_groups_path
+    end
   end
 
 

@@ -1,4 +1,6 @@
 class Member::MemberSkillsController < ApplicationController
+  before_action :authenticate_member!
+
   def new
     @member_skill = MemberSkill.new
   end

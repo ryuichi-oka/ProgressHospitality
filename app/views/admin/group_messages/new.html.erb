@@ -12,14 +12,15 @@
   </div>
   <div class="group-message">
     <div class="group-message__form field">
+      <p id="error"><%= flash[:error] %></p>
       <%= form_with model: @group_message, url: admin_group_messages_path, local: true do |f| %>
-        <%= f.hidden_field :group_id, value: @group_id %>
+        <%= f.hidden_field :group_id, value: @group.id %>
       <div class="field__message-title">
-        <h4 class="field__title">件名</h4>
+        <h4 class="field__title required">件名</h4>
         <%= f.text_field :title, class: "group-message__form--title" %>
       </div>
       <div class="field__body">
-        <h4 class="field__title">本文</h4>
+        <h4 class="field__title required">本文</h4>
         <%= f.text_area :body, class: "group-message__form--body" %>
       </div>
       <div class="field__file">

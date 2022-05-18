@@ -1,4 +1,5 @@
 class Admin::SkillDetailsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @skill_datail = SkillDetail.new
@@ -6,9 +7,14 @@ class Admin::SkillDetailsController < ApplicationController
 
   def create
     @skill_detail = SkillDetail.new(skill_detail_params)
-    @skill_detail.save
     @skill = @skill_detail.skill
-    redirect_to admin_skill_path(@skill.id)
+    @group = @skill.group
+    if @skill_detail.save
+      redirect_to admin_skill_path(@skill.id, group_id: @group.id)
+    else
+      flash[:error] = "技術内容を入力してください。"
+      redirect_to admin_skill_path(@skill.id, group_id: @group.id)
+    end
   end
 
   def update
@@ -18,7 +24,8 @@ class Admin::SkillDetailsController < ApplicationController
     @skill_detail = SkillDetail.find(params[:id])
     @skill_detail.destroy
     @skill = @skill_detail.skill
-    redirect_to admin_skill_path(@skill.id)
+    @group = @skill.group
+    redirect_to admin_skill_path(@skill.id, group_id: @group.id)
   end
 
   private

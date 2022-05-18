@@ -15,6 +15,7 @@
   </div>
   <div class="manual">
     <div class="manual__form field">
+      <p id="error"><%= flash[:error] %></p>
       <%= form_with model: @manual, url: admin_manual_path(@manual.id), method: :patch, local: true do |f| %>
       <div class="field__group">
         <%= f.hidden_field :group_id, value: @manual.group_id %>
@@ -24,11 +25,11 @@
         <%= f.collection_select :work_type_id, WorkType.order(:work_type), :id, :work_type, {}, {class: "manual__form--work-type"} %>
       </div>
       <div class="field__name">
-        <h4 class="field__title">マニュアル名称</h4>
+        <h4 class="field__title required">マニュアル名称</h4>
         <%= f.text_field :name, class: "manual__form--name" %>
       </div>
       <div class="field__body">
-        <h4 class="field__title">マニュアル概要</h4>
+        <h4 class="field__title required">マニュアル概要</h4>
         <%= f.text_area :body, class: "manual__form--body" %>
       </div>
       <div class="field__file">

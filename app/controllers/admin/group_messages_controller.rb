@@ -1,4 +1,5 @@
 class Admin::GroupMessagesController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @group_message = GroupMessage.new
@@ -7,9 +8,13 @@ class Admin::GroupMessagesController < ApplicationController
 
   def create
     @group_message = GroupMessage.new(group_message_params)
-    @group_message.save
     @group = @group_message.group
-    redirect_to admin_group_messages_path(group_id: @group.id)
+    if @group_message.save
+      redirect_to admin_group_messages_path(group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to new_admin_group_message_path(group_id: @group.id)
+    end
   end
 
   def index
@@ -20,6 +25,7 @@ class Admin::GroupMessagesController < ApplicationController
   def show
     @group_message = GroupMessage.find(params[:id])
     @group = @group_message.group
+    @members = @group.members.where(is_active: true)
     @files = params[:files]
     @comments = @group_message.comments.all
   end
@@ -32,8 +38,12 @@ class Admin::GroupMessagesController < ApplicationController
   def update
     @group_message = GroupMessage.find(params[:id])
     @group = @group_message.group
-    @group_message.update(group_message_params)
-    redirect_to admin_group_message_path(@group_message.id, group_id: @group.id)
+    if @group_message.update(group_message_params)
+      redirect_to admin_group_message_path(@group_message.id, group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to edit_admin_group_message_path(@group_message.id, group_id: @group.id)
+    end
   end
 
   def destroy

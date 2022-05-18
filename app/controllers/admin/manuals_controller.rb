@@ -1,4 +1,5 @@
 class Admin::ManualsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @manual = Manual.new
@@ -7,9 +8,13 @@ class Admin::ManualsController < ApplicationController
 
   def create
     @manual = Manual.new(manual_params)
-    @manual.save
     @group = @manual.group
-    redirect_to admin_manuals_path(group_id: @group.id)
+    if @manual.save
+      redirect_to admin_manuals_path(group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to new_admin_manual_path(group_id: @group.id)
+    end
   end
 
   def index
@@ -31,8 +36,12 @@ class Admin::ManualsController < ApplicationController
   def update
     @manual = Manual.find(params[:id])
     @group = @manual.group
-    @manual.update(manual_params)
-    redirect_to admin_manual_path(@manual.id, group_id: @group.id)
+    if @manual.update(manual_params)
+      redirect_to admin_manual_path(@manual.id, group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to edit_admin_manual_path(@manual.id, group_id: @group.id)
+    end
   end
 
   private

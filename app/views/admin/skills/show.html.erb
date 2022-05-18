@@ -89,6 +89,7 @@
           </tbody>
         </table>
         <div class="skillDetails__form">
+          <p id="error" style="padding-left: 20px;"><%= flash[:error] %></p>
           <%= form_with model: @skill_detail, url: admin_skill_details_path, local: true do |f| %>
             <%= f.hidden_field :skill_id, value: @skill.id %>
             <%= f.text_field :body, class: "skillDetails__form--body" %>

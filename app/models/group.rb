@@ -6,6 +6,8 @@ class Group < ApplicationRecord
   has_many :skills
   has_many :group_messages
   has_many :schedules
+  
+  validates :shop_name, presence: true
 
   def get_shop_image(width, height)
     unless shop_image.attached?

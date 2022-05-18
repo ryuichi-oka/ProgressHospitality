@@ -1,12 +1,17 @@
 class Admin::WorkTypesController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
   end
 
   def create
     @work_type = WorkType.new(work_type_params)
-    @work_type.save
-    redirect_to admin_work_types_path
+    if @work_type.save
+      redirect_to admin_work_types_path
+    else
+      flash[:error] = "業務種別を入力してください。"
+      redirect_to admin_work_types_path
+    end
   end
 
   def index

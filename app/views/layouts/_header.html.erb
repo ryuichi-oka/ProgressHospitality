@@ -23,38 +23,48 @@
             <% if params[:group_id] %>
               <li class="menu__item">
                 <%= link_to(admin_groups_path, class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>  店舗一覧</span>
+                  <span><i class="fas fa-caret-right"></i> 店舗一覧</span>
                 <% end %>
               </li>
               <li class="menu__item">
                 <%= link_to(admin_group_path(@group.id, group_id: @group.id), class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>  従業員一覧</span>
+                  <span><i class="fas fa-caret-right"></i> 従業員一覧</span>
                 <% end %>
               </li>
               <li class="menu__item">
                 <%= link_to(admin_group_messages_path(group_id: @group.id), class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>  お知らせ一覧</span>
+                  <span><i class="fas fa-caret-right"></i> お知らせ一覧</span>
                 <% end %>
               </li>
               <li class="menu__item">
                 <%= link_to(admin_skills_path(group_id: @group.id), class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>  スキル一覧</span>
+                  <span><i class="fas fa-caret-right"></i> スキル一覧</span>
                 <% end %>
               </li>
               <li class="menu__item">
                 <%= link_to(admin_manuals_path(group_id: @group.id), class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>  マニュアル一覧</span>
+                  <span><i class="fas fa-caret-right"></i> マニュアル一覧</span>
                 <% end %>
               </li>
               <li class="menu__item">
                 <%= link_to(destroy_admin_session_path, method: :delete, class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>ログアウト</span>
+                  <span><i class="fas fa-caret-right"></i> ログアウト</span>
                 <% end %>
               </li>
               <% else %>
               <li class="menu__item">
+                <%= link_to(admin_groups_path, class: "menu__item--link") do %>
+                  <span><i class="fas fa-caret-right"></i> 店舗一覧</span>
+                <% end %>
+              </li>
+              <li class="menu__item">
+                <%= link_to(admin_work_types_path, class: "menu__item--link") do %>
+                  <span><i class="fas fa-caret-right"></i> 業務種別設定</span>
+                <% end %>
+              </li>
+              <li class="menu__item">
                 <%= link_to(destroy_admin_session_path, method: :delete, class: "menu__item--link") do %>
-                  <span><i class="fas fa-caret-right"></i>ログアウト</span>
+                  <span><i class="fas fa-caret-right"></i> ログアウト</span>
                 <% end %>
               </li>
               <% end %>
@@ -104,11 +114,6 @@
             </ul>
           </div>
         </div>
-        <ul class="nav__links">
-          <li class="nav__item"><%= link_to "マイページ", member_member_path(current_member.id) %></li>
-          <li class="nav__item"></li>
-          <li class="nav__item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-        </ul>
       </div>
     <% else %>
     <% end %>

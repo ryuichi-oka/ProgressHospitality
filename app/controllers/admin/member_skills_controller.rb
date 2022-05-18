@@ -1,4 +1,5 @@
 class Admin::MemberSkillsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @member_skill = MemberSkill.new
@@ -28,7 +29,8 @@ class Admin::MemberSkillsController < ApplicationController
     @member_skill = MemberSkill.find(params[:id])
     @member_skill.destroy
     @member = @member_skill.member
-    redirect_to admin_member_path(@member.id)
+    @group = @member.group
+    redirect_to admin_member_path(@member.id, group_id: @group.id)
   end
 
   private

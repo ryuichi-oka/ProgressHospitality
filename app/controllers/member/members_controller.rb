@@ -1,4 +1,5 @@
 class Member::MembersController < ApplicationController
+  before_action :authenticate_member!
 
   def show
     @member = current_member
@@ -19,8 +20,12 @@ class Member::MembersController < ApplicationController
 
   def update
     @member = current_member
-    @member.update(member_params)
-    redirect_to member_member_path(current_member.id)
+    if @member.update(member_params)
+      redirect_to member_member_path(current_member.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to edit_member_member_path(current_member.id)
+    end
   end
 
   private

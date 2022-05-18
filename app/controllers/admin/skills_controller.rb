@@ -1,4 +1,5 @@
 class Admin::SkillsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @skill = Skill.new
@@ -7,9 +8,13 @@ class Admin::SkillsController < ApplicationController
 
   def create
     @skill = Skill.new(skill_params)
-    @skill.save
     @group = @skill.group
-    redirect_to admin_skills_path(group_id: @group.id)
+    if @skill.save
+      redirect_to admin_skills_path(group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to new_admin_skill_path(group_id: @group.id)
+    end
   end
 
   def index
@@ -34,8 +39,12 @@ class Admin::SkillsController < ApplicationController
   def update
     @skill = Skill.find(params[:id])
     @group = @skill.group
-    @skill.update(skill_params)
-    redirect_to admin_skill_path(@skill.id, group_id: @group.id)
+    if @skill.update(skill_params)
+      redirect_to admin_skill_path(@skill.id, group_id: @group.id)
+    else
+      flash[:error] = " * は必須です。"
+      redirect_to edit_admin_skill_path(@skill.id, group_id: @group.id)
+    end
   end
 
   private

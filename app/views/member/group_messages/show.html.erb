@@ -80,18 +80,46 @@
         </div>
       <% end %>
       <%= form_with model: [@group_message, @comment], url: member_group_message_comments_path(@group_message.id), method: :post do |f| %>
+      <p id="error"><%= flash[:error] %></p>
         <%= f.text_area :comment, class: "commentList__form" %>
         <%= f.button :type => "submit", class: "commentList__form--btn" do %>
           <p><i class="fas fa-comment-dots"></i> コメント送信</p>
         <% end %>
       <% end %>
+      </div>
     </div>
-  </div>
     <div class="message__main">
       <h4 class="message__title">お知らせ本文</h4>
       <div class="message__body">
         <%= simple_format(@group_message.body) %>
       </div>
+    </div>
+    <div class="message__member destination">
+      <h4 class="message__title">送信先一覧</h4>
+      <table class="destination__table">
+        <thead class="destination__head">
+          <tr>
+            <th width="5%"></th>
+            <th width="50%">氏名</th>
+            <th width="40%">確認日時</th>
+          </tr>
+        </thead>
+        <tbody class="destination__body">
+          <% @members.each do |member| %>
+          <tr class="destination__item">
+            <% if @group_message.checked_by?(member) %>
+              <td><%= "" %></td>
+              <td class="destination__name"><%= "#{member.last_name} #{member.first_name}" %></td>
+              <td class="destination__time"><%= l Check.find_by(member_id: member.id, group_message_id: @group_message.id).created_at, format: :long %></td>
+            <% else %>
+              <td><p class="destination__item--red">未</p></td>
+              <td class="destination__name"><%= "#{member.last_name} #{member.first_name}" %></td>
+              <td class="destination__time"></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="container__links--btm">
