@@ -1,0 +1,3 @@
+$('#checks_buttons_<%= @group_message.id %>').html("<%= j(render "member/checks/check", group_message: @group_message) %>");
+$('#checks_title_<%= @group_message.id %>').html("<%= j(render "member/checks/title", group_message: @group_message) %>");
+$('#checks_member_<%= @group_message.id %>').html("<%= j(render "member/checks/member", members: @members, group_message: @group_message) %>");

@@ -1,0 +1,9 @@
+<% if group_message.checked_by?(current_member) %>
+  <%= link_to(member_group_message_checks_path(group_message.id), method: :delete, remote: true, class: "links__item--1") do %>
+    <span><i class="fas fa-times"></i>未確認にする</span>
+  <% end %>
+<% else %>
+  <%= link_to(member_group_message_checks_path(group_message.id), method: :post, remote: true, class: "links__item--1") do %>
+    <span><i class="fas fa-check"></i>確認</span>
+  <% end %>
+<% end %>
