@@ -14,6 +14,7 @@ import 'hamburger.js'
 import 'chart.js'
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+require("../calendar")
 
 Rails.start()
 Turbolinks.start()

@@ -15,6 +15,12 @@ class Admin::MembersController < ApplicationController
     @acquired = @member_skills.where(is_acquire: true)
     @challenges = @member_skills.where(is_acquire: false)
     @member_skill = MemberSkill.new
+
+    @day = Date.today
+    @from_date = Date.new(@day.year, @day.month, @day.beginning_of_month.day)
+    @to_date = Date.new(@day.year, @day.month, @day.end_of_month.day)
+    @schedule_data = @from_date.upto(@to_date)
+
   end
 
   def edit
