@@ -14,8 +14,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :members, only: [:new, :create, :show, :edit, :update]
-
+    resources :members, only: [:new, :create, :show, :edit, :update] 
+      
+    resources :schedules, only: [:new, :create, :index, :edit, :update]
+    
     resources :manuals, only: [:new, :create, :index, :show, :edit, :update]
 
     resources :work_types, only: [:new, :create, :index, :edit, :update]
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
 
     resources :skill_manuals, only: [:create, :destroy]
 
-    resources :schedules, only: [:new, :create, :index, :edit, :update]
 
 
   end

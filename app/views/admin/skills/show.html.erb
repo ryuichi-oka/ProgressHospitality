@@ -69,8 +69,7 @@
         <table class="skillDetails__table">
           <thead>
             <tr>
-              <th width="80%"></th>
-              <th width="10%"></th>
+              <th width="90%"></th>
               <th width="10%"></th>
             </tr>
           </thead>
@@ -78,7 +77,6 @@
             <% @skill_details.each do |skill_detail| %>
             <tr class="skillDetails__item">
               <td class="skillDetails__body"><%= skill_detail.body %></td>
-              <td class="skillDetails__edit"><span class="skillDetails__edit--btn">編集</span></td>
               <td class="skillDetails__des">
                 <%= link_to(admin_skill_detail_path(skill_detail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "acquired__des--btn") do %>
                   <span><i class="fas fa-minus-square"></i></span>

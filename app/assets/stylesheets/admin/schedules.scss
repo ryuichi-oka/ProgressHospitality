@@ -7,3 +7,84 @@
   width: 90%;
   margin: 10px auto;
 }
+
+#schedule-modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.schedule-modal {
+
+  &__bg {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    left: -50%;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__content {
+    padding: 20px;
+    background-color: #fff;
+    width: 30%;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+}
+
+.schedule {
+  &__form {
+    margin-top: 20px;
+
+    &--txt {
+      font-size: 20px;
+      height: 40px;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 50px;
+      text-align: left;
+      padding: 3px;
+    }
+
+    &--select {
+      font-size: 20px;
+      height: 40px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-align: left;
+      padding: 3px;
+    }
+
+    &--sub {
+      font-weight: bold;
+      height: 40px;
+      margin: 60px auto 10px;
+      display: block;
+      border: 1px solid #a9ceec;
+      border-radius: 10px;
+      font-size: 10pt;
+      text-align: center;
+      padding: 5px 15px;
+      background-color: #009d5b;
+      color: #000;
+    }
+  }
+  &__label {
+    display: block;
+    text-align: left;
+  }
+}
+.fc-event-title {
+  white-space: normal;
+}

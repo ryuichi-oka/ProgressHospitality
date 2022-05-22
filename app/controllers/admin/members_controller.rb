@@ -21,6 +21,9 @@ class Admin::MembersController < ApplicationController
     @to_date = Date.new(@day.year, @day.month, @day.end_of_month.day)
     @schedule_data = @from_date.upto(@to_date)
 
+    @schedule = Schedule.new
+    @events = Schedule.all
+
   end
 
   def edit

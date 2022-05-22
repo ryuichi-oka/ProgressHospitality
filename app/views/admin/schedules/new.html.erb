@@ -1,31 +1,4 @@
-<div class="container">
-  <h4><%= "#{@member.last_name} #{@member.first_name}" %></h4>
-  <%= form_with model: @shift, url: admin_schedules_path(member_id: @member.id, month: @month), method: :post do |f| %>
-    <table>
-      <thead>
-        <tr>
-          <th>日付</th>
-          <th>公休</th>
-          <th>出勤時刻</th>
-          <th>退勤時刻</th>
-          <th>備考</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @schedule_data.each do |day| %>
-        <tr>
-          <td><%= day.strftime('%Y/%m/%d') %></td>
-          <td><%= f.check_box "#{day}[holiday]", {} , true, false %></td>
-          <td><%= f.time_field "#{day}[shift]", step: 300 %></td>
-          <td><%= f.time_field "#{day}[shift_end]", step: 300 %></td>
-          <td><%= f.text_field "#{day}[comment]" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= f.submit %>
-  <% end %>
-</div>
+
 
 
 

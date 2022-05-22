@@ -60,6 +60,19 @@
       <h3 class="memberData__heading">スケジュール</h3>
       <div class="memberData__schedule schedules">
         <div id="calendar"></div>
+        <div id="schedule-modal" class="schedule-modal">
+          <div class="schedule-modal__bg schedule-modal-close"></div>
+            <div class="schedule-modal__content">
+              <h1 class="schedule-modal__title">スケジュール登録</h1>
+              <div class="schedule-modal__body">
+                <div id="group-id"><%= params[:group_id] %></div>
+                <div id="member-id"><%= params[:id] %></div>
+              </div>
+              <div class="schedule-modal-close">
+                <p class="close-btn">閉じる</p>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
     <div class="memberData__item">
