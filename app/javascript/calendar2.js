@@ -4,14 +4,13 @@ import monthGridPlugin from '@fullcalendar/daygrid';
 import googleCalendarApi from '@fullcalendar/google-calendar';
 
 document.addEventListener('turbolinks:load', function() {
-  const calendarEl = document.getElementById('calendar');
+  const calendarEl = document.getElementById('calendar2');
   if (!calendarEl) return;
-  const memberId = document.getElementById('member-id');
-  if (!memberId) return;
 
-  const calendar = new Calendar(calendarEl, {
+  const calendar2 = new Calendar(calendarEl, {
     plugins: [ monthGridPlugin, interactionPlugin, googleCalendarApi ],
-    events: '/admin/schedules.json?id='+ memberId.dataset.id,
+
+    events: '/member/schedules.json',
     locale: 'ja',
     timeZone: 'Asia/Tokyo',
     firstDay: 1,
@@ -35,7 +34,7 @@ document.addEventListener('turbolinks:load', function() {
 
       $.ajax({
         type: 'GET',
-        url:  '/admin/schedules/new',
+        url:  '/member/schedules/new',
         data: { group_id: $('#group-id').text(), id: $('#member-id').text() }
       }).done(function (res) {
         $('.schedule-modal__body').html(res);
@@ -60,10 +59,10 @@ document.addEventListener('turbolinks:load', function() {
 
 
   });
-  calendar.render();
+  calendar2.render();
 
   $(".error").click(function (){
-    calendar.refeychEvents();
+    calendar2.refeychEvents();
   });
 
 });

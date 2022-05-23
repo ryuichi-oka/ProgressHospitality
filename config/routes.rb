@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about", as: "about"
 
+  devise_scope :admin do
+    post 'admins/guest_sign_in', to: 'admin/sessions#guest_sign_in'
+  end
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -14,10 +18,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :members, only: [:new, :create, :show, :edit, :update] 
-      
+    resources :members, only: [:new, :create, :show, :edit, :update]
+
     resources :schedules, only: [:new, :create, :index, :edit, :update]
-    
+
     resources :manuals, only: [:new, :create, :index, :show, :edit, :update]
 
     resources :work_types, only: [:new, :create, :index, :edit, :update]
@@ -36,6 +40,8 @@ Rails.application.routes.draw do
 
   namespace :member do
     resources :members, only: [:index, :show, :edit, :update]
+
+    resources :schedules, only: [:new, :create, :index]
 
     resources :member_skills, only: [:create, :destroy]
 

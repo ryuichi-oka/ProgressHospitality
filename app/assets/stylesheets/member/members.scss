@@ -26,6 +26,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
 
   &__bg {
     background-color: rgba(0, 0, 0, 0.6);

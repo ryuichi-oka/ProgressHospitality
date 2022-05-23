@@ -35,8 +35,8 @@
             <th>添付ファイル</th>
             <td>
               <% if @manual.files.attached? %>
-                <% @files.each do |file| %>
-                  <%= file.filename %>
+                <% @manual.files.each do |file| %>
+                  <%= link_to file.filename, rails_blob_path(file), target: :_blank, rel: "noopener noreferrer" %>
                 <% end %>
               <% else %>
                 <%= "添付ファイル無し" %>

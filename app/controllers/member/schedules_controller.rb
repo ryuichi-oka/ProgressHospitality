@@ -1,9 +1,9 @@
-class Admin::SchedulesController < ApplicationController
-  before_action :authenticate_admin!
+class Member::SchedulesController < ApplicationController
+  before_action :authenticate_member!
 
   def new
-    @group_id = params[:group_id]
     @member_id = params[:id]
+    @group_id = params[:group_id]
     @schedule = Schedule.new
     render plain: render_to_string(partial: 'form_new', layout: false, locals: { schedule: @schedule })
 
@@ -25,11 +25,11 @@ class Admin::SchedulesController < ApplicationController
     # end
     @schedule.save
 
-    redirect_to admin_member_path(@member.id, group_id: @group.id)
+    redirect_to member_member_path(@member.id)
   end
 
   def index
-    @events = Schedule.where(member_id: params[:id])
+    @events = Schedule.where(member_id: current_member.id)
   end
 
   def edit
@@ -43,7 +43,4 @@ class Admin::SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:group_id, :member_id, :date, :event)
   end
-
-
-
 end

@@ -22,7 +22,7 @@ class Admin::MembersController < ApplicationController
     @schedule_data = @from_date.upto(@to_date)
 
     @schedule = Schedule.new
-    @events = Schedule.all
+    @events = Schedule.where(member_id: @member.id)
 
   end
 

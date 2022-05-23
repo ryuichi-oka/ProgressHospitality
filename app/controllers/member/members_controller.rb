@@ -8,9 +8,8 @@ class Member::MembersController < ApplicationController
     @acquired = @member_skills.where(is_acquire: true)
     @challenges = @member_skills.where(is_acquire: false)
     @member_skill = MemberSkill.new
-    
-    @schedule = Schedule.new
-    @events = Schedule.all
+
+    @events = Schedule.where(member_id: current_member.id)
 
   end
 

@@ -15,6 +15,7 @@ import 'chart.js'
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 require("../calendar")
+require("../calendar2")
 
 Rails.start()
 Turbolinks.start()

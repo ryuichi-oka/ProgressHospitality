@@ -38,8 +38,8 @@
             <th>添付ファイル</th>
             <td>
               <% if @group_message.files.attached? %>
-                <% @files.each do |file| %>
-                  <%= file.filename %>
+                <% @group_message.files.each do |file| %>
+                  <%= link_to file.filename, rails_blob_path(file), target: :_blank, rel: "noopener noreferrer" %>
                 <% end %>
               <% else %>
                 <%= "" %>

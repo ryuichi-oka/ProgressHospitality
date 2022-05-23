@@ -15,6 +15,11 @@
           <span><i class="fas fa-sign-in-alt"></i>メンバーログイン</span>
         <% end %>
       </div>
+      <div class="content__login--btn button">
+        <%= link_to(admins_guest_sign_in_path, method: :post, class: "button__admin") do %>
+          <span><i class="fas fa-sign-in-alt"></i>ゲストログイン</span>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

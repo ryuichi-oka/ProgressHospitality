@@ -1,0 +1,17 @@
+<div class="schedule">
+  <div class="schedule__form">
+    <%= form_with model: @schedule, url: member_schedules_path, remote: true do |f| %>
+      <%= f.hidden_field :group_id, value: @group_id %>
+      <%= f.hidden_field :member_id, value: @member_id %>
+      <div class="schedule__form--txt">
+        <label for="event" class="schedule__label">内容</label>
+        <%= f.text_field :event, class: "schedule__form--txt", required: true %>
+      </div>
+      <div class="schedule__form--select">
+        <label for="date" class="schedule__label">日時</label>
+        <%= f.date_select :date, {default: Date.today}, {class: "schedule__form--select"} %>
+      </div>
+      <%= f.submit "登録", class: "schedule__form--sub" %>
+    <% end %>
+  </div>
+</div>
