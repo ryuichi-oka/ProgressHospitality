@@ -6,7 +6,8 @@
       <div class="group-modal__bg js-group-modal-close"></div>
       <div class="group-modal__content">
         <h3 class="group-modal__title">店舗新規登録</h3>
-        <%= form_with model: @group_new, url: admin_groups_path, local: true do |f| %>
+        <%= form_with model: @group, url: admin_groups_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :admin_id, value: current_admin.id %>
         <div class="group-modal__form--txt">
           <%= f.text_field :shop_name, placeholder: "店舗名", class: "group-modal__form--txt" %></div>
         <div><%= f.submit "登録", class: "group-modal__form--sub" %></div>

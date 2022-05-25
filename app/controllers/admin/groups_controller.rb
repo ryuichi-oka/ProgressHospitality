@@ -2,11 +2,12 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
 
   def new
+    @group = Group.new
   end
 
 
   def index
-    @group_new = Group.new
+    @group = Group.new
     @groups = Group.all
   end
 
@@ -34,6 +35,6 @@ class Admin::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:shop_name, :shop_image)
+    params.require(:group).permit(:admin_id, :shop_name)
   end
 end
