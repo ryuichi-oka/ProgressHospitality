@@ -15,6 +15,8 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 require("../calendar")
 require("../calendar2")
+import '@fullcalendar/common/main.css'
+import '@fullcalendar/daygrid/main.css'
 
 Rails.start()
 Turbolinks.start()
